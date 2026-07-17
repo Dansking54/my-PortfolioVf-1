@@ -29,7 +29,13 @@ PAGES = ["Home", "Photography", "Film", "About", "Services", "Contact",
 # Which gallery photos fill the empty design frames. Filled from gallery.json:
 # portrait frames get tall photos, landscape frames get wide ones.
 with open(os.path.join(OUT, "assets", "gallery.json"), encoding="utf-8") as f:
-    GALLERY = json.load(f)["photos"]
+    _data = json.load(f)
+# gallery.json now groups photos into albums; flatten to one pool for the
+# slot-fills below (older single-album manifests used a flat "photos" list).
+if "albums" in _data:
+    GALLERY = [p for a in _data["albums"] for p in a.get("photos", [])]
+else:
+    GALLERY = _data.get("photos", [])
 PORTRAIT = [p["file"] for p in GALLERY if (p["h"] or 0) >= (p["w"] or 1)]
 LANDSCAPE = [p["file"] for p in GALLERY if (p["w"] or 0) > (p["h"] or 1)]
 

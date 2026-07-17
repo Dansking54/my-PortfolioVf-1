@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Album">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project — Dan's Logs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  .album-head{padding:150px 0 40px}
+  .album-head .back{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;font-size:12px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .album-head .back:hover{color:var(--ink)}
+  .album-head .marker{display:flex;align-items:baseline;gap:18px;border-top:2px solid var(--ink);padding-top:20px;flex-wrap:wrap}
+  .album-head h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(44px,8vw,110px);line-height:.9;letter-spacing:.01em}
+  .album-head .cnt{margin-left:auto;color:var(--muted);font-size:14px;letter-spacing:.06em;text-transform:uppercase;
+    font-variant-numeric:tabular-nums;align-self:flex-end;padding-bottom:6px}
+  @media(max-width:700px){.album-head{padding:120px 0 30px}.album-head .cnt{margin-left:0}}
+
+  .gal-wrap{padding-bottom:80px}
+  .masonry{column-count:3;column-gap:18px}
+  @media(max-width:900px){.masonry{column-count:2;column-gap:14px}}
+  @media(max-width:560px){.masonry{column-count:1}}
+  .m-item{break-inside:avoid;margin:0 0 18px;display:block;position:relative;
+    overflow:hidden;background:var(--paper2);cursor:zoom-in}
+  .m-item img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .m-item:hover img{transform:scale(1.04)}
+  .m-item::after{content:"";position:absolute;inset:0;opacity:0;transition:.35s;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.4))}
+  .m-item:hover::after{opacity:1}
+  .gal-empty{color:var(--muted);padding:40px 0}
+
+  /* Prev / next project */
+  .pnav{display:flex;justify-content:space-between;gap:20px;padding:34px 0 96px;
+    border-top:1px solid var(--line);margin-top:20px}
+  .pnav a{display:flex;flex-direction:column;gap:7px;max-width:48%}
+  .pnav a.next{text-align:right;margin-left:auto;align-items:flex-end}
+  .pnav .lbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .pnav .nm{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(22px,3.4vw,30px);letter-spacing:.01em}
+  .pnav a:hover .nm{color:var(--accent)}
+
+  /* Lightbox */
+  .lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    background:rgba(8,7,5,.94);backdrop-filter:blur(4px)}
+  .lb.on{display:flex}
+  .lb img{max-width:92vw;max-height:86vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lb .x,.lb .nav{position:absolute;color:#f7f2e8;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);cursor:pointer;display:flex;align-items:center;
+    justify-content:center;transition:.2s;user-select:none}
+  .lb .x{top:20px;right:22px;width:44px;height:44px;border-radius:50%;font-size:22px}
+  .lb .nav{top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;font-size:26px}
+  .lb .prev{left:22px}.lb .next{right:22px}
+  .lb .x:hover,.lb .nav:hover{background:var(--sand);color:#0b0a08;border-color:var(--sand)}
+  .lb .count{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(247,242,232,.7);
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+  @media(max-width:560px){.lb .nav{width:42px;height:42px}.lb .prev{left:8px}.lb .next{right:8px}}
+</style>
+</head>
+<body>
+<header class="site scrolled" id="hdr">
+  <a class="logo" href="index.html">Dan<b>.</b></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Photography.html">Photography</a>
+    <a class="active" href="Gallery.html">Gallery</a>
+    <a href="Film.html">Film</a>
+    <a href="Latest.html">Latest</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+    <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">@dans_logs ↗</a>
+  </nav>
+</header>
+
+<div class="album-head wrap">
+  <a class="back" href="Gallery.html">← All projects</a>
+  <div class="marker">
+    <h1 id="albumTitle">Project</h1>
+    <span class="cnt" id="albumCount"></span>
+  </div>
+</div>
+
+<section class="gal-wrap wrap">
+  <div class="masonry" id="masonry"></div>
+  <p class="gal-empty" id="galEmpty" style="display:none">This project is syncing — check back in a moment.</p>
+</section>
+
+<nav class="pnav wrap" id="albumNav"></nav>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="x" id="lbClose" title="Close (Esc)">✕</div>
+  <div class="nav prev" id="lbPrev" title="Previous">‹</div>
+  <img id="lbImg" alt="" />
+  <div class="nav next" id="lbNext" title="Next">›</div>
+  <div class="count" id="lbCount"></div>
+</div>
+
+<a class="cta-band" href="Contact.html">
+  <span class="eyebrow">Want a set like this?</span>
+  <span class="big display">Let's <em>Roll</em></span>
+  <span class="sub" style="display:block">Book a shoot — <b>danslogs.contact@gmail.com</b></span>
+</a>
+
+<footer class="site">
+  <a class="logo" href="index.html">Dan<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Gallery.html">Gallery</a><a href="Film.html">Film</a><a href="Latest.html">Latest</a><a href="About.html">About</a><a href="Services.html">Services</a><a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <small>© 2026 Dan's Logs — Photographer &amp; Filmmaker, Montréal</small>
+</footer>
+
+<script>
+  var h=document.getElementById('hdr');
+  addEventListener('scroll',function(){h.classList.toggle('scrolled',scrollY>40||true)},{passive:true});
+</script>
+<script src="gallery.js"></script>
+</body>
+</html>

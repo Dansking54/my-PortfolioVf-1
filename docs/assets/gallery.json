@@ -1,199 +1,380 @@
 {
-  "album": "5431219a3eff41089cd3b061a493fe40",
-  "count": 24,
   "size": "2048",
-  "photos": [
+  "albums": [
     {
-      "file": "assets/gallery/_mg_7578.jpg",
-      "name": "_MG_7578.JPG",
-      "date": "2025-03-05T16:35:46.64-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 47
+      "slug": "after-the-rain",
+      "title": "After the Rain",
+      "cover": "assets/gallery/after-the-rain/cover.jpg",
+      "count": 24,
+      "photos": [
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7578.jpg",
+          "name": "_MG_7578.JPG",
+          "date": "2025-03-05T16:35:46.64-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7570.jpg",
+          "name": "_MG_7570.JPG",
+          "date": "2025-03-05T16:31:04.86-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7569.jpg",
+          "name": "_MG_7569.JPG",
+          "date": "2025-03-05T16:30:58.67-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7568.jpg",
+          "name": "_MG_7568.JPG",
+          "date": "2025-03-05T16:20:42.21-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7567.jpg",
+          "name": "_MG_7567.JPG",
+          "date": "2025-03-05T16:20:36.90-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7566.jpg",
+          "name": "_MG_7566.JPG",
+          "date": "2025-03-05T16:20:34.62-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7565.jpg",
+          "name": "_MG_7565.JPG",
+          "date": "2025-03-05T16:20:16.50-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7564.jpg",
+          "name": "_MG_7564.JPG",
+          "date": "2025-03-05T16:20:15.76-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7563.jpg",
+          "name": "_MG_7563.JPG",
+          "date": "2025-03-05T16:20:14.92-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7562.jpg",
+          "name": "_MG_7562.JPG",
+          "date": "2025-03-05T16:20:12.38-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7561.jpg",
+          "name": "_MG_7561.JPG",
+          "date": "2025-03-05T16:20:07.28-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7560.jpg",
+          "name": "_MG_7560.JPG",
+          "date": "2025-03-05T16:20:05.72-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7559.jpg",
+          "name": "_MG_7559.JPG",
+          "date": "2025-03-05T16:20:02.38-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7558.jpg",
+          "name": "_MG_7558.JPG",
+          "date": "2025-03-05T16:17:09.59-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7557.jpg",
+          "name": "_MG_7557.JPG",
+          "date": "2025-03-05T16:17:03.06-04:00",
+          "w": 1637,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7556.jpg",
+          "name": "_MG_7556.JPG",
+          "date": "2025-03-05T16:16:56.70-04:00",
+          "w": 1638,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7555.jpg",
+          "name": "_MG_7555.JPG",
+          "date": "2025-03-05T16:16:52.25-04:00",
+          "w": 1638,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7554.jpg",
+          "name": "_MG_7554.JPG",
+          "date": "2025-03-05T16:08:09.23-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7529.jpg",
+          "name": "_MG_7529.JPG",
+          "date": "2025-03-05T15:59:46.47-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7458.jpg",
+          "name": "_MG_7458.JPG",
+          "date": "2025-03-05T15:00:41.99-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7364.jpg",
+          "name": "_MG_7364.JPG",
+          "date": "2025-03-05T13:10:12.21-04:00",
+          "w": 1637,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7358.jpg",
+          "name": "_MG_7358.JPG",
+          "date": "2025-03-05T13:10:02.53-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7338.jpg",
+          "name": "_MG_7338.JPG",
+          "date": "2025-03-05T13:06:37.84-04:00",
+          "w": 1365,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/after-the-rain/_mg_7328.jpg",
+          "name": "_MG_7328.JPG",
+          "date": "2025-03-05T13:04:52.10-04:00",
+          "w": 1365,
+          "h": 2048
+        }
+      ]
     },
     {
-      "file": "assets/gallery/_mg_7570.jpg",
-      "name": "_MG_7570.JPG",
-      "date": "2025-03-05T16:31:04.86-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 46
+      "slug": "suburban-skies",
+      "title": "Suburban Skies",
+      "cover": "assets/gallery/suburban-skies/cover.jpg",
+      "count": 15,
+      "photos": [
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4912.jpg",
+          "name": "_MG_4912.JPG",
+          "date": "2025-09-30T17:28:47.92-04:00",
+          "w": 2048,
+          "h": 1280
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4812.jpg",
+          "name": "_MG_4812.JPG",
+          "date": "2025-09-30T16:48:57.83-04:00",
+          "w": 2048,
+          "h": 1279
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4672.jpg",
+          "name": "_MG_4672.JPG",
+          "date": "2025-09-30T16:37:12.77-04:00",
+          "w": 2048,
+          "h": 1149
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4588.jpg",
+          "name": "_MG_4588.JPG",
+          "date": "2025-09-30T16:30:19.38-04:00",
+          "w": 2048,
+          "h": 1149
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4477.jpg",
+          "name": "_MG_4477.JPG",
+          "date": "2025-09-30T16:15:36.59-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4462.jpg",
+          "name": "_MG_4462.JPG",
+          "date": "2025-09-30T16:14:08.35-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4454.jpg",
+          "name": "_MG_4454.JPG",
+          "date": "2025-09-30T16:13:08.55-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4354.jpg",
+          "name": "_MG_4354.JPG",
+          "date": "2025-09-30T16:02:14.34-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_4319.jpg",
+          "name": "_MG_4319.JPG",
+          "date": "2025-09-30T11:47:47.63-04:00",
+          "w": 2048,
+          "h": 1365
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_3667.jpg",
+          "name": "_MG_3667.JPG",
+          "date": "2025-09-15T17:53:49.14-04:00",
+          "w": 2048,
+          "h": 1084
+        },
+        {
+          "file": "assets/gallery/suburban-skies/mvi_1021---frame-at-0m10s.jpg",
+          "name": "MVI_1021 - frame at 0m10s.jpeg",
+          "date": "2025-09-11T10:56:01-04:00",
+          "w": 2048,
+          "h": 1152
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_3199.jpg",
+          "name": "_MG_3199.JPG",
+          "date": "2025-08-24T19:14:20.11-04:00",
+          "w": 2048,
+          "h": 1536
+        },
+        {
+          "file": "assets/gallery/suburban-skies/img_0532.jpg",
+          "name": "IMG_0532.JPG",
+          "date": "2025-06-14T20:00:28.09-04:00",
+          "w": 1833,
+          "h": 1375
+        },
+        {
+          "file": "assets/gallery/suburban-skies/img_0525.jpg",
+          "name": "IMG_0525.JPG",
+          "date": "2025-06-14T19:57:35.57-04:00",
+          "w": 1984,
+          "h": 1488
+        },
+        {
+          "file": "assets/gallery/suburban-skies/_mg_9171.jpg",
+          "name": "_MG_9171.JPG",
+          "date": "2025-05-15T19:15:15.99-04:00",
+          "w": 1984,
+          "h": 1488
+        }
+      ]
     },
     {
-      "file": "assets/gallery/_mg_7569.jpg",
-      "name": "_MG_7569.JPG",
-      "date": "2025-03-05T16:30:58.67-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 36
+      "slug": "snow-and-gold",
+      "title": "Snow & Gold",
+      "cover": "assets/gallery/snow-and-gold/cover.jpg",
+      "count": 6,
+      "photos": [
+        {
+          "file": "assets/gallery/snow-and-gold/_mg_6370.jpg",
+          "name": "_MG_6370.JPG",
+          "date": "2025-11-11T16:25:42.34-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/snow-and-gold/_mg_6367.jpg",
+          "name": "_MG_6367.JPG",
+          "date": "2025-11-11T16:24:19.30-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/snow-and-gold/_mg_6366.jpg",
+          "name": "_MG_6366.JPG",
+          "date": "2025-11-11T16:24:12.17-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/snow-and-gold/_mg_6365.jpg",
+          "name": "_MG_6365.JPG",
+          "date": "2025-11-11T16:24:01.87-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/snow-and-gold/img_6362.jpg",
+          "name": "IMG_6362.JPG",
+          "date": "2025-11-11T16:23:46.68-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/snow-and-gold/img_6359.jpg",
+          "name": "IMG_6359.JPG",
+          "date": "2025-11-11T16:23:37.96-04:00",
+          "w": 2048,
+          "h": 2048
+        }
+      ]
     },
     {
-      "file": "assets/gallery/_mg_7568.jpg",
-      "name": "_MG_7568.JPG",
-      "date": "2025-03-05T16:20:42.21-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 40
-    },
-    {
-      "file": "assets/gallery/_mg_7567.jpg",
-      "name": "_MG_7567.JPG",
-      "date": "2025-03-05T16:20:36.90-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 39
-    },
-    {
-      "file": "assets/gallery/_mg_7566.jpg",
-      "name": "_MG_7566.JPG",
-      "date": "2025-03-05T16:20:34.62-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 40
-    },
-    {
-      "file": "assets/gallery/_mg_7565.jpg",
-      "name": "_MG_7565.JPG",
-      "date": "2025-03-05T16:20:16.50-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 38
-    },
-    {
-      "file": "assets/gallery/_mg_7564.jpg",
-      "name": "_MG_7564.JPG",
-      "date": "2025-03-05T16:20:15.76-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 39
-    },
-    {
-      "file": "assets/gallery/_mg_7563.jpg",
-      "name": "_MG_7563.JPG",
-      "date": "2025-03-05T16:20:14.92-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 33
-    },
-    {
-      "file": "assets/gallery/_mg_7562.jpg",
-      "name": "_MG_7562.JPG",
-      "date": "2025-03-05T16:20:12.38-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 46
-    },
-    {
-      "file": "assets/gallery/_mg_7561.jpg",
-      "name": "_MG_7561.JPG",
-      "date": "2025-03-05T16:20:07.28-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 39
-    },
-    {
-      "file": "assets/gallery/_mg_7560.jpg",
-      "name": "_MG_7560.JPG",
-      "date": "2025-03-05T16:20:05.72-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 33
-    },
-    {
-      "file": "assets/gallery/_mg_7559.jpg",
-      "name": "_MG_7559.JPG",
-      "date": "2025-03-05T16:20:02.38-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 41
-    },
-    {
-      "file": "assets/gallery/_mg_7558.jpg",
-      "name": "_MG_7558.JPG",
-      "date": "2025-03-05T16:17:09.59-04:00",
-      "w": 2048,
-      "h": 1365,
-      "score": 39
-    },
-    {
-      "file": "assets/gallery/_mg_7557.jpg",
-      "name": "_MG_7557.JPG",
-      "date": "2025-03-05T16:17:03.06-04:00",
-      "w": 1637,
-      "h": 2048,
-      "score": 40
-    },
-    {
-      "file": "assets/gallery/_mg_7556.jpg",
-      "name": "_MG_7556.JPG",
-      "date": "2025-03-05T16:16:56.70-04:00",
-      "w": 1638,
-      "h": 2048,
-      "score": 50
-    },
-    {
-      "file": "assets/gallery/_mg_7555.jpg",
-      "name": "_MG_7555.JPG",
-      "date": "2025-03-05T16:16:52.25-04:00",
-      "w": 1638,
-      "h": 2048,
-      "score": 46
-    },
-    {
-      "file": "assets/gallery/_mg_7554.jpg",
-      "name": "_MG_7554.JPG",
-      "date": "2025-03-05T16:08:09.23-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 59
-    },
-    {
-      "file": "assets/gallery/_mg_7529.jpg",
-      "name": "_MG_7529.JPG",
-      "date": "2025-03-05T15:59:46.47-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 62
-    },
-    {
-      "file": "assets/gallery/_mg_7458.jpg",
-      "name": "_MG_7458.JPG",
-      "date": "2025-03-05T15:00:41.99-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 56
-    },
-    {
-      "file": "assets/gallery/_mg_7364.jpg",
-      "name": "_MG_7364.JPG",
-      "date": "2025-03-05T13:10:12.21-04:00",
-      "w": 1637,
-      "h": 2048,
-      "score": 52
-    },
-    {
-      "file": "assets/gallery/_mg_7358.jpg",
-      "name": "_MG_7358.JPG",
-      "date": "2025-03-05T13:10:02.53-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 56
-    },
-    {
-      "file": "assets/gallery/_mg_7338.jpg",
-      "name": "_MG_7338.JPG",
-      "date": "2025-03-05T13:06:37.84-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 59
-    },
-    {
-      "file": "assets/gallery/_mg_7328.jpg",
-      "name": "_MG_7328.JPG",
-      "date": "2025-03-05T13:04:52.10-04:00",
-      "w": 1365,
-      "h": 2048,
-      "score": 59
+      "slug": "on-film",
+      "title": "On Film",
+      "cover": "assets/gallery/on-film/cover.jpg",
+      "count": 4,
+      "photos": [
+        {
+          "file": "assets/gallery/on-film/_mg_2381.jpg",
+          "name": "_MG_2381.JPG",
+          "date": "2025-07-12T15:14:48.00-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/on-film/_mg_2379.jpg",
+          "name": "_MG_2379.JPG",
+          "date": "2025-07-12T15:12:16.18-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/on-film/_mg_2378.jpg",
+          "name": "_MG_2378.JPG",
+          "date": "2025-07-12T15:10:26.77-04:00",
+          "w": 2048,
+          "h": 2048
+        },
+        {
+          "file": "assets/gallery/on-film/_mg_2375.jpg",
+          "name": "_MG_2375.JPG",
+          "date": "2025-07-12T15:03:48.49-04:00",
+          "w": 2048,
+          "h": 2048
+        }
+      ]
     }
   ]
 }

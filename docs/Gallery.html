@@ -9,35 +9,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="site.css" />
 <style>
-  .gal-wrap{padding-bottom:80px}
-  /* Masonry via CSS columns — handles mixed portrait/landscape gracefully */
-  .masonry{column-count:3;column-gap:18px}
-  @media(max-width:900px){.masonry{column-count:2;column-gap:14px}}
-  @media(max-width:560px){.masonry{column-count:1}}
-  .m-item{break-inside:avoid;margin:0 0 18px;display:block;position:relative;
-    overflow:hidden;background:var(--paper2);cursor:zoom-in}
-  .m-item img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-  .m-item:hover img{transform:scale(1.04)}
-  .m-item::after{content:"";position:absolute;inset:0;opacity:0;transition:.35s;
-    background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.4))}
-  .m-item:hover::after{opacity:1}
-  .gal-empty{color:var(--muted);padding:40px 0}
+  .wall-wrap{padding-bottom:90px}
+  /* Wall of projects — each cover links into its album */
+  .album-wall{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 26px}
+  @media(min-width:1080px){.album-wall{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:600px){.album-wall{grid-template-columns:1fr;gap:26px}}
 
-  /* Lightbox */
-  .lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
-    background:rgba(8,7,5,.94);backdrop-filter:blur(4px)}
-  .lb.on{display:flex}
-  .lb img{max-width:92vw;max-height:86vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6)}
-  .lb .x,.lb .nav{position:absolute;color:#f7f2e8;background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.18);cursor:pointer;display:flex;align-items:center;
-    justify-content:center;transition:.2s;user-select:none}
-  .lb .x{top:20px;right:22px;width:44px;height:44px;border-radius:50%;font-size:22px}
-  .lb .nav{top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;font-size:26px}
-  .lb .prev{left:22px}.lb .next{right:22px}
-  .lb .x:hover,.lb .nav:hover{background:var(--sand);color:#0b0a08;border-color:var(--sand)}
-  .lb .count{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(247,242,232,.7);
-    font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-variant-numeric:tabular-nums}
-  @media(max-width:560px){.lb .nav{width:42px;height:42px}.lb .prev{left:8px}.lb .next{right:8px}}
+  .album-card{display:block;position:relative}
+  .album-ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper2)}
+  .album-ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  .album-card:hover .album-ph img{transform:scale(1.05)}
+  .album-ph::after{content:"";position:absolute;inset:0;opacity:0;transition:.35s;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.34))}
+  .album-card:hover .album-ph::after{opacity:1}
+  .album-meta{display:flex;align-items:baseline;gap:12px;padding:16px 2px 0}
+  .album-meta .at{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:.02em}
+  .album-meta .ac{color:var(--muted);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase}
+  .album-meta .ar{margin-left:auto;font-size:18px;transition:.25s}
+  .album-card:hover .album-meta .ar{transform:translate(4px,-4px);color:var(--accent)}
+  .gal-empty{color:var(--muted);padding:40px 0}
 </style>
 </head>
 <body>
@@ -60,23 +50,14 @@
   <div class="marker">
     <span class="n">↻</span>
     <h1>Gall<em>ery</em></h1>
-    <span class="meta">The living feed — straight from my Lightroom. New photos I add there show up here automatically.</span>
+    <span class="meta">The work, grouped into projects — straight from my Lightroom. Open any cover for the full set.</span>
   </div>
 </div>
 
-<section class="gal-wrap wrap">
-  <div class="masonry" id="masonry"></div>
+<section class="wall-wrap wrap">
+  <div class="album-wall" id="albumWall"></div>
   <p class="gal-empty" id="galEmpty" style="display:none">Gallery is syncing — check back in a moment.</p>
 </section>
-
-<!-- Lightbox -->
-<div class="lb" id="lb" aria-hidden="true">
-  <div class="x" id="lbClose" title="Close (Esc)">✕</div>
-  <div class="nav prev" id="lbPrev" title="Previous">‹</div>
-  <img id="lbImg" alt="" />
-  <div class="nav next" id="lbNext" title="Next">›</div>
-  <div class="count" id="lbCount"></div>
-</div>
 
 <a class="cta-band" href="Contact.html">
   <span class="eyebrow">Want a set like this?</span>
