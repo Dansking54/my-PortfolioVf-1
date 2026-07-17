@@ -62,6 +62,10 @@ NAV_GROUP = {
 # The @dans_logs button target. TODO: swap for Dan's standalone bio-site link.
 BIOSITE_URL = "https://www.instagram.com/dans_logs/"
 
+# Bump this whenever site.css / the shared JS changes, so browsers (and the
+# GitHub Pages CDN) fetch the fresh file instead of a stale cached copy.
+ASSET_VERSION = "3"
+
 
 def nav_html(active):
     def a(group):
@@ -118,6 +122,11 @@ def transform(name, html):
 
     # 3) flatten asset paths
     html = html.replace("../assets/", "assets/")
+
+    # 3b) cache-bust the shared CSS/JS so browsers reload them after changes
+    html = html.replace('href="site.css"', f'href="site.css?v={ASSET_VERSION}"')
+    html = html.replace('src="projects.js"', f'src="projects.js?v={ASSET_VERSION}"')
+    html = html.replace('src="gallery.js"', f'src="gallery.js?v={ASSET_VERSION}"')
 
     # 4) Home.html -> index.html (nav, footer, CTA anchors, #work)
     html = html.replace("Home.html", "index.html")
