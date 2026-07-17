@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Services">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Services — Dan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  /* Direction A's services layout, dark */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .svc{background:var(--bg);padding:46px 42px;transition:.3s}
+  .svc:hover{background:rgba(212,180,131,.05)}
+  .svc h3{font-size:26px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px;display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+  .svc h3 .price{font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;color:var(--amber);font-weight:400;white-space:nowrap}
+  .svc p{color:var(--muted);font-size:15px;margin-bottom:18px;max-width:44ch}
+  .svc ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .svc li{font-size:12.5px;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:6px 13px;color:var(--ink)}
+  .svc.minor{background:var(--bg-2)}
+  .svc.minor h3{font-size:20px}
+  @media(max-width:720px){.svc-grid{grid-template-columns:1fr}}
+
+  .how{margin-top:90px}
+  .how h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(26px,3.6vw,44px);margin-bottom:34px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .step{border-top:2px solid var(--amber);padding-top:18px}
+  .step b{font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:14.5px}
+  @media(max-width:700px){.steps{grid-template-columns:1fr}}
+
+  .cta-line{margin-top:90px;text-align:center}
+  .cta-line .serif{font-size:clamp(22px,3vw,32px);color:var(--muted);display:block;margin-bottom:24px}
+  .cta-line .serif em{color:var(--amber)}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <nav>
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a class="nav-cta" href="Contact.html">Let's roll →</a>
+  </nav>
+</header>
+
+<div class="page-head wrap">
+  <div class="eyebrow">Work With Me</div>
+  <h1>Ser<em>vices</em></h1>
+  <p class="sub">Booked as a package or a day rate. Every project starts with a conversation — tell me what you're making.</p>
+</div>
+
+<div class="wrap">
+  <div class="svc-grid rv">
+    <div class="svc">
+      <h3>Photography<span class="price">from $250</span></h3>
+      <p>Portraits, weddings &amp; events, brand and editorial sessions — delivered fully graded.</p>
+      <ul><li>Portraits</li><li>Weddings &amp; Events</li><li>Brand &amp; Commercial</li><li>Documentary</li></ul>
+    </div>
+    <div class="svc">
+      <h3>Film &amp; Video<span class="price">from $800</span></h3>
+      <p>Music videos, short films, event films and social reels — concept to final grade.</p>
+      <ul><li>Music Videos</li><li>Short Films</li><li>Event Films</li><li>Reels</li></ul>
+    </div>
+    <div class="svc minor">
+      <h3>Also: Design<span class="price">from $300</span></h3>
+      <p>Web design, flyers &amp; simple visual identity to round out a project.</p>
+      <ul><li>Web Design</li><li>Flyers</li></ul>
+    </div>
+    <div class="svc minor">
+      <h3>Something else?<span class="price">let's talk</span></h3>
+      <p>Half-day and full-day rates, retainers, and collaborations welcome.</p>
+      <ul><li>Day Rates</li><li>Retainers</li><li>Collabs</li></ul>
+    </div>
+  </div>
+
+  <div class="how rv">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><b>01 — Talk</b><p>Tell me what you're making, where, and when. We scope it together — no forms, no friction.</p></div>
+      <div class="step"><b>02 — Shoot</b><p>I show up early, chase the light, and stay until we have it. You'll see selects fast.</p></div>
+      <div class="step"><b>03 — Deliver</b><p>Fully graded stills or a final cut, delivered ready to post, print or premiere.</p></div>
+    </div>
+  </div>
+
+  <div class="cta-line rv">
+    <span class="serif">Prices are starting points — <em>every project gets its own quote.</em></span>
+    <a class="btn-amber" href="Contact.html">Get a quote</a>
+  </div>
+</div>
+
+<footer class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <a class="ig" href="https://www.youtube.com/@dans_logs" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"></path></svg>
+    YouTube
+  </a>
+  <small>© 2026 Dan — Photographer &amp; Filmmaker</small>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

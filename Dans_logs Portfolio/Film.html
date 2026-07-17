@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Film">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Films — Dan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script src="lib/image-slot.js"></script>
+<style>
+  .page-head .row{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+
+  /* Featured — YouTube channel */
+  .yt-card{position:relative;display:block;aspect-ratio:21/9;overflow:hidden;background:#000;border:1px solid var(--line)}
+  .yt-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .yt-card:hover img{transform:scale(1.03)}
+  .yt-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.68),transparent 50%);pointer-events:none;z-index:2}
+  .yt-card .rec{position:absolute;top:20px;right:24px;z-index:4}
+  .yt-card .meta{position:absolute;left:30px;bottom:26px;z-index:4;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .yt-card .meta b{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:30px;display:block;letter-spacing:.02em;color:#fff}
+  .yt-card .meta em{font-style:normal;color:rgba(242,236,224,.7);font-size:14px;letter-spacing:.06em;display:block;margin-top:4px}
+  .yt-card .go{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#161208;
+    font-family:'Anton',sans-serif;text-transform:uppercase;font-size:14px;letter-spacing:.06em;padding:12px 24px;border-radius:999px;transition:.25s}
+  .yt-card:hover .go{background:var(--amber-hi)}
+  .yt-card .go svg{width:16px;height:16px;fill:#161208}
+  @media(max-width:640px){.yt-card{aspect-ratio:16/10}.yt-card .meta{left:18px;bottom:16px;gap:12px}.yt-card .meta b{font-size:22px}}
+
+  /* Films list */
+  .films-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin:84px 0 8px}
+  .films-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(28px,4vw,52px)}
+  .films-head p{color:var(--muted);font-size:14.5px;max-width:420px}
+  .film-row{display:grid;grid-template-columns:60px 1.4fr 1fr auto auto;gap:24px;align-items:center;
+    padding:26px 6px;border-top:1px solid var(--line);transition:.3s;cursor:pointer}
+  .film-row:last-of-type{border-bottom:1px solid var(--line)}
+  .film-row:hover{background:rgba(212,180,131,.05);padding-left:18px}
+  .film-row .no{font-family:'Anton',sans-serif;color:var(--amber);font-size:22px}
+  .film-row .ti{font-size:clamp(20px,2.4vw,30px);font-weight:600;letter-spacing:-.01em}
+  .film-row:hover .ti{color:var(--amber)}
+  .film-row .ty{color:var(--muted);font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+  .film-row .yr{color:var(--muted);font-variant-numeric:tabular-nums;font-size:15px}
+  .film-row .ar{color:var(--muted);opacity:0;transform:translateX(-8px);transition:.25s;font-size:18px}
+  .film-row:hover .ar{opacity:1;transform:none;color:var(--amber)}
+  @media(max-width:640px){.film-row{grid-template-columns:40px 1fr auto}.film-row .ty,.film-row .ar{display:none}}
+
+  /* Reels — Instagram */
+  .reels{margin-top:100px}
+  .reels-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+  .reels-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(28px,4vw,52px)}
+  .reels-head h2 em{font-style:italic;font-family:'Instrument Serif',serif;text-transform:none;color:var(--amber)}
+  .reels-head p{color:var(--muted);font-size:14.5px;max-width:380px}
+  .reels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .reel-card{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--bg-2);border:1px solid var(--line)}
+  .reel-card image-slot{width:100%;height:100%}
+  .reel-card .ig-ic{position:absolute;top:12px;right:12px;z-index:3;width:26px;height:26px;color:#fff;opacity:.85;pointer-events:none}
+  @media(max-width:900px){.reels-grid{grid-template-columns:repeat(2,1fr)}}
+  .reels-cta{margin-top:30px;text-align:center}
+
+  .note{margin-top:36px;color:var(--muted);font-size:14.5px;border:1px dashed var(--line);padding:18px 22px;max-width:680px}
+  .note b{color:var(--amber);font-weight:600}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <nav>
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a class="nav-cta" href="Contact.html">Let's roll →</a>
+  </nav>
+</header>
+
+<div class="page-head wrap">
+  <div class="row">
+    <div>
+      <div class="eyebrow">Motion</div>
+      <h1>Films</h1>
+      <p class="sub">Music videos, short films and event films — all on YouTube. Quick cuts live on Instagram Reels, below.</p>
+    </div>
+    <span class="rec" style="margin-top:14px"><i></i>REC</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <a class="yt-card rv" href="https://www.youtube.com/@dans_logs" target="_blank" rel="noopener">
+    <img src="assets/be-cinematic.jpeg" alt="Be Cinematic — Dan's YouTube channel" />
+    <span class="rec"><i></i>REC</span>
+    <div class="meta">
+      <div><b>Be Cinematic</b><em>My YouTube channel — films, music videos &amp; event films</em></div>
+      <span class="go"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg> Watch on YouTube</span>
+    </div>
+  </a>
+
+  <div class="films-head rv">
+    <h2>Selected films</h2>
+    <p>A few projects worth your time — each one opens the full film on YouTube. Newest first.</p>
+  </div>
+  <div class="rv">
+    <div class="film-row"><span class="no">01</span><span class="ti">Neon &amp; Nightfall</span><span class="ty">Music Video</span><span class="yr">2025</span><span class="ar">↗</span></div>
+    <div class="film-row"><span class="no">02</span><span class="ti">The Long Drive Home</span><span class="ty">Short Film</span><span class="yr">2024</span><span class="ar">↗</span></div>
+    <div class="film-row"><span class="no">03</span><span class="ti">M &amp; J — A Wedding Film</span><span class="ty">Event Film</span><span class="yr">2024</span><span class="ar">↗</span></div>
+    <div class="film-row"><span class="no">04</span><span class="ti">Concrete Gardens</span><span class="ty">Documentary</span><span class="yr">2023</span><span class="ar">↗</span></div>
+  </div>
+  <p class="note rv"><b>Note:</b> these film titles are placeholders — send me your real project names, types and YouTube links and I'll wire each row to open the actual videos. Same for your channel handle: I guessed <b>youtube.com/@dans_logs</b>, tell me the real one if that's off.</p>
+
+  <div class="reels rv">
+    <div class="reels-head">
+      <div>
+        <div class="eyebrow">Instagram</div>
+        <h2>Quick cuts — <em>reels</em></h2>
+      </div>
+      <p>The fast stuff: behind-the-scenes, edits and experiments, posted as Reels on Instagram.</p>
+    </div>
+    <div class="reels-grid">
+      <div class="reel-card"><image-slot id="reel-1" placeholder="Drop a reel cover (9:16)"></image-slot>
+        <svg class="ig-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+      </div>
+      <div class="reel-card"><image-slot id="reel-2" placeholder="Drop a reel cover (9:16)"></image-slot>
+        <svg class="ig-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+      </div>
+      <div class="reel-card"><image-slot id="reel-3" placeholder="Drop a reel cover (9:16)"></image-slot>
+        <svg class="ig-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+      </div>
+      <div class="reel-card"><image-slot id="reel-4" placeholder="Drop a reel cover (9:16)"></image-slot>
+        <svg class="ig-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+      </div>
+    </div>
+    <div class="reels-cta">
+      <a class="btn-ghost" href="https://www.instagram.com/dans_logs/reels/" target="_blank" rel="noopener">Watch reels on Instagram ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <a class="ig" href="https://www.youtube.com/@dans_logs" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"></path></svg>
+    YouTube
+  </a>
+  <small>© 2026 Dan — Photographer &amp; Filmmaker</small>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

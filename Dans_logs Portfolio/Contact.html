@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Contact">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Dan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  .contact{text-align:center;padding-top:170px}
+  .contact h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(58px,13vw,190px);line-height:.86;margin:18px 0 30px}
+  .contact h1 em{font-style:normal;-webkit-text-stroke:1.5px var(--amber);color:transparent}
+  .contact .lead{color:var(--muted);max-width:42ch;margin:0 auto 28px;font-size:17px}
+  .contact a.big{font-size:clamp(20px,3vw,30px);font-weight:600;color:var(--amber);border-bottom:2px solid var(--line);padding-bottom:4px;transition:.3s}
+  .contact a.big:hover{border-color:var(--amber)}
+  .form{max-width:640px;margin:52px auto 0}
+  .form .btn-amber{align-self:center;margin-top:8px}
+  .alt{display:flex;justify-content:center;gap:34px;margin-top:46px;flex-wrap:wrap}
+  .alt a{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-weight:600;font-size:15px;transition:.2s}
+  .alt a:hover{color:var(--amber)}
+  .alt svg{width:18px;height:18px}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <nav>
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a class="nav-cta" href="Contact.html">Let's roll →</a>
+  </nav>
+</header>
+
+<div class="contact wrap">
+  <div class="eyebrow">Contact</div>
+  <h1>Let's <em>roll</em></h1>
+  <p class="lead">Got a shoot, a film, or just an idea? Tell me about it — I reply to everything.</p>
+  <a class="big" href="mailto:hello@danslogs.com">hello@danslogs.com</a>
+
+  <form class="form rv" onsubmit="event.preventDefault();this.querySelector('.btn-amber').textContent='Sent — talk soon ♥'">
+    <div class="row">
+      <label>Name<input type="text" placeholder="Your name" required /></label>
+      <label>Email<input type="email" placeholder="you@email.com" required /></label>
+    </div>
+    <label>Project<input type="text" placeholder="Portrait, wedding, music video…" /></label>
+    <label>Message<textarea placeholder="Tell me what you're making."></textarea></label>
+    <button class="btn-amber" type="submit">Send it</button>
+  </form>
+
+  <div class="alt">
+    <a href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+      @dans_logs
+    </a>
+    <a href="Services.html">Rates &amp; services →</a>
+  </div>
+</div>
+
+<footer class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <a class="ig" href="https://www.youtube.com/@dans_logs" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"></path></svg>
+    YouTube
+  </a>
+  <small>© 2026 Dan — Photographer &amp; Filmmaker</small>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

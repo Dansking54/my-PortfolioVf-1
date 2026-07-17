@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Contact">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Dan's Logs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  .contact-hero{padding:190px 0 30px;text-align:center}
+  .contact-hero .eyebrow{display:block;margin-bottom:20px}
+  .contact-hero h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(64px,14vw,210px);line-height:.84;letter-spacing:.01em}
+  .contact-hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--accent)}
+  .contact-hero .sub{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(20px,2.6vw,30px);margin-top:24px;color:var(--muted)}
+  .contact-hero a.big{display:inline-block;margin-top:26px;font-size:clamp(19px,2.6vw,26px);font-weight:600;
+    border-bottom:2px solid var(--sand);padding-bottom:3px;transition:.25s}
+  .contact-hero a.big:hover{color:var(--accent)}
+  .formwrap{max-width:680px;margin:60px auto 0;padding:0 40px 120px}
+  .alt{display:flex;justify-content:center;gap:26px;margin-top:34px;flex-wrap:wrap}
+  .alt a{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;color:var(--muted);transition:.2s}
+  .alt a:hover{color:var(--accent)}
+  .alt svg{width:18px;height:18px}
+</style>
+</head>
+<body>
+<header class="site scrolled" id="hdr">
+  <a class="logo" href="Home.html">Dan<b>.</b></a>
+  <nav>
+    <a href="Home.html">Home</a>
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a class="active" href="Contact.html">Contact</a>
+    <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">@dans_logs ↗</a>
+  </nav>
+</header>
+
+<div class="contact-hero wrap">
+  <span class="eyebrow">05 — Contact</span>
+  <h1>Let's <em>Roll</em></h1>
+  <p class="sub">— a shoot, a film, or just an idea. I reply to everything.</p>
+  <a class="big" href="mailto:danslogs.contact@gmail.com">danslogs.contact@gmail.com</a>
+  <div class="alt">
+    <a href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+      @dans_logs
+    </a>
+  </div>
+</div>
+
+<div class="formwrap">
+  <form class="form" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Sent — talk soon ♥'">
+    <div class="row">
+      <label>Name<input type="text" placeholder="Your name" required /></label>
+      <label>Email<input type="email" placeholder="you@email.com" required /></label>
+    </div>
+    <label>Project<input type="text" placeholder="Portrait, wedding, music video…" /></label>
+    <label>Message<textarea placeholder="Tell me what you're making."></textarea></label>
+    <button class="btn" type="submit">Send message</button>
+  </form>
+</div>
+
+<footer class="site">
+  <a class="logo" href="Home.html">Dan<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a><a href="Film.html">Film</a><a href="About.html">About</a><a href="Services.html">Services</a><a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <small>© 2026 Dan's Logs — Photographer &amp; Filmmaker, Montréal</small>
+</footer>
+
+<script>
+  var h=document.getElementById('hdr');
+  addEventListener('scroll',function(){h.classList.toggle('scrolled',scrollY>40||true)},{passive:true});
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* Dan — shared site styles (dark cinematic) */
+:root{
+  --bg:#0b0a08;
+  --bg-2:#131210;
+  --ink:#f2ece0;
+  --muted:#8c8579;
+  --amber:#d4b483;
+  --amber-hi:#e6c896;
+  --line:rgba(242,236,224,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Archivo',sans-serif;font-size:18px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::after{ /* film grain */
+  content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1340px;margin:0 auto;padding:0 44px}
+@media(max-width:600px){.wrap{padding:0 22px}}
+.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.eyebrow{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--amber);font-weight:600}
+
+/* ---------- Header (blur on scroll) ---------- */
+header.site{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 44px;transition:.35s;
+  border-bottom:1px solid transparent;
+}
+header.site.scrolled{
+  background:rgba(11,10,8,.55);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+  padding:14px 44px;
+}
+.logo{font-family:'Anton',sans-serif;font-size:23px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.logo b{color:var(--amber)}
+header.site nav{display:flex;gap:28px;align-items:center}
+header.site nav a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:.2s}
+header.site nav a:hover{color:var(--ink)}
+header.site nav a.active{color:var(--amber)}
+.nav-cta{border:1px solid var(--line);border-radius:999px;padding:8px 18px;color:var(--ink) !important}
+.nav-cta:hover{background:var(--amber);color:#161208 !important;border-color:var(--amber)}
+@media(max-width:880px){header.site nav a:not(.nav-cta){display:none}header.site{padding:18px 22px}header.site.scrolled{padding:12px 22px}}
+
+/* ---------- Page head (subpages) ---------- */
+.page-head{padding:170px 0 70px}
+.page-head h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(52px,9vw,128px);line-height:.88;margin-top:16px}
+.page-head h1 em{font-style:italic;font-family:'Instrument Serif',serif;text-transform:none;color:var(--amber);font-size:.82em}
+.page-head .sub{margin-top:20px;color:var(--muted);max-width:52ch;font-size:17px}
+
+/* ---------- Buttons ---------- */
+.btn-amber{display:inline-flex;align-items:center;gap:12px;background:var(--amber);color:#161208;
+  font-family:'Anton',sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:.06em;
+  padding:15px 34px;border-radius:999px;border:none;cursor:pointer;transition:.25s}
+.btn-amber:hover{background:var(--amber-hi)}
+.btn-ghost{display:inline-flex;align-items:center;gap:12px;color:var(--ink);border:1px solid var(--line);
+  padding:13px 26px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.04em;transition:.3s;background:rgba(255,255,255,.02)}
+.btn-ghost:hover{background:var(--amber);color:#161208;border-color:var(--amber)}
+
+/* ---------- Reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- Forms ---------- */
+.form{display:flex;flex-direction:column;gap:16px;text-align:left}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form label{display:flex;flex-direction:column;gap:7px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.form input,.form textarea{font-family:'Archivo',sans-serif;font-size:16px;color:var(--ink);background:var(--bg-2);
+  border:1px solid var(--line);padding:13px 14px;transition:.25s}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--amber)}
+.form textarea{resize:vertical;min-height:100px}
+@media(max-width:600px){.form .row{grid-template-columns:1fr}}
+
+/* ---------- REC badge ---------- */
+.rec{display:inline-flex;align-items:center;gap:8px;color:var(--amber);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.rec i{width:9px;height:9px;border-radius:50%;background:#e0464b;animation:recblink 1.6s infinite}
+@keyframes recblink{0%,100%{opacity:1}50%{opacity:.2}}
+@media (prefers-reduced-motion: reduce){.rec i{animation:none}}
+
+/* ---------- Footer ---------- */
+footer.site{border-top:1px solid var(--line);padding:38px 44px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:110px}
+footer.site .ig{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;color:var(--muted)}
+footer.site .ig svg{width:18px;height:18px}
+footer.site .ig:hover{color:var(--amber)}
+footer.site small{color:var(--muted);font-size:13px}
+footer.site .pages{display:flex;gap:18px;flex-wrap:wrap}
+footer.site .pages a{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+footer.site .pages a:hover{color:var(--ink)}

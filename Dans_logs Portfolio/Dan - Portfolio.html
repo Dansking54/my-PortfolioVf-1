@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dan — Portfolio Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#1c1b19;--panel:#262422;--ink:#efe9dd;--muted:#9a9387;--accent:#d4b483;--line:rgba(239,233,221,.12)}
+  body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;padding:48px 40px 80px}
+  .grotesk{font-family:'Space Grotesk',sans-serif}
+  .head{max-width:900px;margin:0 auto 14px}
+  .head .eyebrow{font-family:'Space Grotesk';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .head h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(32px,5vw,52px);letter-spacing:-.03em;line-height:1.02;margin:14px 0 16px}
+  .head p{color:var(--muted);font-size:17px;max-width:60ch;line-height:1.55}
+  .head .tip{margin-top:16px;display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--ink);
+    background:var(--panel);border:1px solid var(--line);padding:9px 16px;border-radius:999px}
+  .head .tip b{color:var(--accent)}
+  .grid{max-width:1640px;margin:46px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:1100px){.grid{grid-template-columns:1fr;max-width:560px}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .card .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line)}
+  .card .bar .l .k{font-family:'Space Grotesk';font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .card .bar .l h2{font-family:'Space Grotesk';font-weight:700;font-size:22px;letter-spacing:-.01em;margin-top:3px}
+  .card .bar .l p{color:var(--muted);font-size:13px;margin-top:4px;max-width:34ch;line-height:1.45}
+  .open{flex-shrink:0;font-family:'Space Grotesk';font-weight:600;font-size:13px;color:var(--bg);background:var(--accent);
+    border-radius:999px;padding:9px 16px;transition:.2s;text-decoration:none;white-space:nowrap}
+  .open:hover{background:#e6c896}
+  .viewport{position:relative;width:100%;background:#000;overflow:hidden}
+  .viewport iframe{border:0;width:1440px;transform-origin:top left;background:#fff}
+  .viewport .scrim{position:absolute;inset:0;z-index:2;cursor:pointer}
+  .viewport .scrim span{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(20,18,15,.82);
+    color:#fff;font-family:'Space Grotesk';font-size:12px;font-weight:500;padding:8px 16px;border-radius:999px;
+    backdrop-filter:blur(4px);opacity:0;transition:.25s;white-space:nowrap}
+  .viewport:hover .scrim span{opacity:1}
+  .foot{max-width:900px;margin:54px auto 0;color:var(--muted);font-size:14px;line-height:1.6;border-top:1px solid var(--line);padding-top:24px}
+  .foot b{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+  <div class="head">
+    <div class="eyebrow">Dan · Photographer &amp; Filmmaker</div>
+    <h1 class="grotesk">Three directions for your portfolio.</h1>
+    <p>Same content, same warm palette and clean type — three different personalities. Photo &amp; film lead every one; web &amp; flyers stays a small, humble section. Open any one fullscreen, scroll the whole thing, and tell me which feels most like you (or mix &amp; match).</p>
+    <span class="tip">📷 <span><b>Drag your own photos</b> onto any image — they fill all three directions at once.</span></span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="bar">
+        <div class="l"><div class="k">Direction A</div><h2>Gallery</h2><p>Light, editorial, museum-like whitespace — your "light &amp; airy" pick.</p></div>
+        <a class="open" href="Gallery.html" target="_blank">Open ↗</a>
+      </div>
+      <div class="viewport"><iframe src="Gallery.html?preview=1" title="Gallery" scrolling="no"></iframe><a class="scrim" href="Gallery.html" target="_blank"><span>Open fullscreen ↗</span></a></div>
+    </div>
+    <div class="card">
+      <div class="bar">
+        <div class="l"><div class="k">Direction B</div><h2>Cinema</h2><p>Dark, film-forward, showreel energy — matches your photo's mood.</p></div>
+        <a class="open" href="Cinema.html" target="_blank">Open ↗</a>
+      </div>
+      <div class="viewport"><iframe src="Cinema.html?preview=1" title="Cinema" scrolling="no"></iframe><a class="scrim" href="Cinema.html" target="_blank"><span>Open fullscreen ↗</span></a></div>
+    </div>
+    <div class="card">
+      <div class="bar">
+        <div class="l"><div class="k">Direction C</div><h2>Index</h2><p>Bold, typographic, numbered — energetic and modern.</p></div>
+        <a class="open" href="Index.html" target="_blank">Open ↗</a>
+      </div>
+      <div class="viewport"><iframe src="Index.html?preview=1" title="Index" scrolling="no"></iframe><a class="scrim" href="Index.html" target="_blank"><span>Open fullscreen ↗</span></a></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <p><b>Next:</b> pick a direction (or borrow pieces across them — e.g. Cinema's hero with Gallery's grid). Then drop in your real photos &amp; reel, swap the placeholder copy/prices, and I'll wire up the contact form to actually send. The Instagram link already points to <b>@dans_logs</b>.</p>
+  </div>
+
+<script>
+  function fit(){
+    document.querySelectorAll('.viewport').forEach(function(vp){
+      var f=vp.querySelector('iframe');
+      var w=vp.clientWidth;
+      var scale=w/1440;
+      var h=1100;
+      try{ var d=f.contentDocument; if(d&&d.body){ h=Math.max(d.body.scrollHeight,d.documentElement.scrollHeight);} }catch(e){}
+      h=Math.min(h,12000);
+      f.style.height=h+'px';
+      f.style.transform='scale('+scale+')';
+      vp.style.height=(h*scale)+'px';
+    });
+  }
+  window.addEventListener('resize',function(){clearTimeout(window.__t);window.__t=setTimeout(fit,150)});
+  document.querySelectorAll('.viewport iframe').forEach(function(f){
+    f.addEventListener('load',function(){ setTimeout(fit,300); setTimeout(fit,1200); });
+  });
+  window.addEventListener('load',function(){setTimeout(fit,500)});
+</script>
+</body>
+</html>

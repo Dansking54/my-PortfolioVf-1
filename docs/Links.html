@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Links">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Dan's Logs — Links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  /* ===== Link-in-bio — Dan's Logs ===== */
+  body.bio{
+    min-height:100svh;
+    background:var(--paper);
+    display:flex;align-items:flex-start;justify-content:center;
+    padding:max(28px,env(safe-area-inset-top)) 18px 40px;
+  }
+  /* Cinematic backdrop — golden-hour still, darkened + blurred, fixed */
+  .bio-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:#0b0a08}
+  .bio-bg img{width:100%;height:100%;object-fit:cover;object-position:center 62%;
+    transform:scale(1.08);filter:blur(7px) brightness(.16) saturate(1.05)}
+  .bio-bg::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 80% at 50% 0%,rgba(3,3,2,.55),rgba(2,2,1,.96) 78%)}
+  /* Interactive two-tone dot field */
+  .bio-dots{position:fixed;inset:0;z-index:1;pointer-events:none}
+
+  .bio-card{position:relative;z-index:2;width:100%;max-width:468px;
+    display:flex;flex-direction:column;align-items:center;text-align:center}
+
+  /* Avatar */
+  .bio-av{position:relative;width:118px;height:118px;margin-bottom:22px}
+  .bio-av img{width:118px;height:118px;border-radius:50%;
+    box-shadow:0 0 0 2px var(--sand),0 0 0 8px rgba(212,180,131,.12),0 18px 40px rgba(0,0,0,.5)}
+  .bio-av .ring2{position:absolute;inset:-14px;border-radius:50%;
+    border:1px solid rgba(212,180,131,.28);pointer-events:none}
+
+  .bio-name{font-family:'Anton',sans-serif;text-transform:uppercase;color:#f4ede0;
+    font-size:clamp(36px,9.5vw,52px);line-height:.92;letter-spacing:.02em;white-space:nowrap}
+  .bio-handle{margin-top:12px;font-size:13px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--sand)}
+  .bio-tag{font-family:'Instrument Serif',serif;font-style:italic;color:rgba(244,237,224,.9);
+    font-size:19px;margin-top:14px}
+  .bio-loc{margin-top:9px;font-size:13px;letter-spacing:.06em;color:rgba(244,237,224,.55)}
+
+  /* Featured — Portfolio */
+  .feat-label{display:flex;align-items:center;gap:14px;width:100%;margin:36px 0 16px;
+    color:var(--sand);font-size:11px;letter-spacing:.34em;text-transform:uppercase;font-weight:600}
+  .feat-label::before,.feat-label::after{content:"";height:1px;flex:1;background:rgba(212,180,131,.3)}
+
+  .feat{position:relative;display:block;width:100%;border-radius:18px;overflow:hidden;
+    aspect-ratio:16/10;box-shadow:0 22px 50px rgba(0,0,0,.55);
+    transition:transform .35s ease,box-shadow .35s ease}
+  .feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:transform .6s ease}
+  .feat::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(11,10,8,.05),rgba(11,10,8,.35) 46%,rgba(11,10,8,.9))}
+  .feat .feat-in{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;text-align:left;color:#f7f2e8}
+  .feat .feat-in .k{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--sand);font-weight:600}
+  .feat .feat-in h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:34px;
+    line-height:.92;letter-spacing:.01em;margin-top:8px}
+  .feat .feat-in p{font-size:14px;color:rgba(247,242,232,.82);margin-top:7px;max-width:88%}
+  .feat .go{position:absolute;top:16px;right:16px;z-index:2;width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:18px;color:#0b0a08;
+    background:var(--sand);transition:.3s}
+  .feat:hover{transform:translateY(-3px);box-shadow:0 30px 60px rgba(0,0,0,.62)}
+  .feat:hover img{transform:scale(1.05)}
+  .feat:hover .go{transform:translate(3px,-3px)}
+
+  .feat-sub{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-top:10px}
+  .feat-sub a{display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:13px 16px;border-radius:13px;text-align:left;
+    background:rgba(244,237,224,.06);border:1px solid rgba(212,180,131,.22);
+    color:#f4ede0;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:.03em;
+    transition:.25s}
+  .feat-sub a span.ar{color:var(--sand);font-size:14px;transition:.25s}
+  .feat-sub a:hover{background:rgba(212,180,131,.14);border-color:var(--sand)}
+  .feat-sub a:hover span.ar{transform:translate(3px,-3px)}
+
+  /* Social links */
+  .socials{display:flex;flex-direction:column;gap:11px;width:100%;margin-top:26px}
+  .lnk{display:flex;align-items:center;gap:15px;width:100%;padding:15px 18px;border-radius:14px;
+    background:rgba(244,237,224,.055);border:1px solid rgba(244,237,224,.12);
+    color:#f4ede0;text-align:left;transition:transform .22s ease,background .22s,border-color .22s}
+  .lnk:hover{transform:translateY(-2px);background:rgba(212,180,131,.12);border-color:rgba(212,180,131,.5)}
+  .lnk .ic{flex:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--sand)}
+  .lnk .ic svg{width:24px;height:24px}
+  .lnk .tx{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+  .lnk .tx b{font-size:15.5px;font-weight:600;letter-spacing:.01em}
+  .lnk .tx small{font-size:12.5px;color:rgba(244,237,224,.55);letter-spacing:.02em}
+  .lnk .ar{margin-left:auto;color:rgba(244,237,224,.4);font-size:17px;transition:.25s}
+  .lnk:hover .ar{color:var(--sand);transform:translateX(3px)}
+
+  .bio-foot{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .bio-foot .logo{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:18px;
+    letter-spacing:.05em;color:#f4ede0}
+  .bio-foot .logo b{color:var(--sand)}
+  .bio-foot small{font-size:11.5px;letter-spacing:.06em;color:rgba(244,237,224,.45)}
+
+  @media(max-width:380px){
+    .feat-sub{grid-template-columns:1fr}
+    .feat .feat-in h2{font-size:30px}
+  }
+</style>
+</head>
+<body class="bio dark">
+
+<div class="bio-bg">
+  <img src="assets/hero-goldenhour.jpg" alt="" />
+</div>
+<canvas class="bio-dots" id="bioDots"></canvas>
+
+<main class="bio-card">
+  <div class="bio-av">
+    <div class="ring2"></div>
+    <img id="bio-avatar" shape="circle" src="assets/pfp.png" placeholder="Your photo"></img>
+  </div>
+
+  <h1 class="bio-name">Dan Logs</h1>
+  <div class="bio-handle">@dans_logs</div>
+  <div class="bio-tag">— visual storyteller</div>
+  <div class="bio-loc">Photographer &amp; Filmmaker · Montréal</div>
+
+  <!-- Featured: Portfolio / Website -->
+  <div class="feat-label">The Portfolio</div>
+  <a class="feat" href="index.html">
+    <img src="assets/hero-goldenhour.jpg" alt="Golden-hour Montréal skyline" />
+    <span class="go">↗</span>
+    <div class="feat-in">
+      <span class="k">Full Website</span>
+      <h2>Stills &amp; Motion</h2>
+      <p>The complete portfolio — street, portraits, weddings, films &amp; the showreel.</p>
+    </div>
+  </a>
+  <div class="feat-sub">
+    <a href="Photography.html">Photography <span class="ar">↗</span></a>
+    <a href="Film.html">Film &amp; Reel <span class="ar">↗</span></a>
+  </div>
+
+  <!-- Socials -->
+  <nav class="socials">
+    <a class="lnk" href="https://www.instagram.com/dans_logs" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"></circle></svg></span>
+      <span class="tx"><b>Instagram</b><small>@dans_logs</small></span>
+      <span class="ar">→</span>
+    </a>
+    <a class="lnk" href="https://www.tiktok.com/@dans_logs" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .6.05.88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"></path></svg></span>
+      <span class="tx"><b>TikTok</b><small>@dans_logs</small></span>
+      <span class="ar">→</span>
+    </a>
+    <a class="lnk" href="https://www.youtube.com/@Dans_Logs" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"></path></svg></span>
+      <span class="tx"><b>YouTube</b><small>@Dans_Logs</small></span>
+      <span class="ar">→</span>
+    </a>
+    <a class="lnk" href="mailto:danslogs.contact@gmail.com">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"></rect><path d="m3.5 7 8.5 6 8.5-6"></path></svg></span>
+      <span class="tx"><b>Email</b><small>danslogs.contact@gmail.com</small></span>
+      <span class="ar">→</span>
+    </a>
+  </nav>
+
+  <div class="bio-foot">
+    <span class="logo">Dan<b>.</b></span>
+    <small>© 2026 Dan's Logs — Montréal</small>
+  </div>
+</main>
+
+<script>
+(function(){
+  var c=document.getElementById('bioDots'); if(!c) return;
+  var x=c.getContext('2d');
+  var rest=document.createElement('canvas'), rx=rest.getContext('2d');   // cached static field
+  var tmp=document.createElement('canvas'), tx=tmp.getContext('2d');     // scratch for the one-time blur
+  var dpr=Math.min(2,window.devicePixelRatio||1);
+  var W=0,H=0;
+
+  // ---- tunables ----
+  var GAP   = 40*dpr;        // spacing between coins
+  var R     = 95*dpr;        // influence radius around the cursor
+  var PUSH  = 9*dpr;         // how far a coin is nudged away (stays gripped)
+  var REST_A= 0.16;          // resting opacity (barely noticeable)
+  var FRONT = '212,206,194'; // resting / away-facing tone (light)
+  var BACK  = '17,14,10';    // the second face that turns toward the cursor (dark)
+
+  var coins=[], grid={}, cell=R, cols=0;
+  var active={};             // index -> coin, only coins currently in motion
+  var mouse={x:-9999,y:-9999,on:false};
+  var idleDrawn=false;
+
+  function key(cx,cy){ return cx+','+cy; }
+
+  function build(){
+    coins=[]; grid={}; cell=R;
+    for(var gy=GAP*0.5; gy<H+GAP; gy+=GAP){
+      for(var gx=GAP*0.5; gx<W+GAP; gx+=GAP){
+        var hx=gx+(Math.random()-0.5)*GAP*0.34, hy=gy+(Math.random()-0.5)*GAP*0.34;
+        var d={ hx:hx, hy:hy, ox:0, oy:0, tilt:0, aim:0, tp:0, r:(3.4+Math.random()*1.8)*dpr };
+        var idx=coins.push(d)-1;
+        var k=key(Math.floor(hx/cell), Math.floor(hy/cell));
+        (grid[k]||(grid[k]=[])).push(idx);
+      }
+    }
+    prerender();
+  }
+
+  // Pre-render the faint resting field ONCE, softly blurred so it blends into
+  // the photo. Redrawn each frame as a single cached image (O(1) background).
+  function prerender(){
+    tx.clearRect(0,0,W,H);
+    for(var i=0;i<coins.length;i++){
+      var d=coins[i];
+      tx.beginPath(); tx.arc(d.hx,d.hy,d.r,0,Math.PI*2);
+      tx.fillStyle='rgba('+FRONT+','+REST_A+')'; tx.fill();
+    }
+    rx.clearRect(0,0,W,H);
+    rx.filter='blur('+(1.1*dpr)+'px)';
+    rx.drawImage(tmp,0,0);
+    rx.filter='none';
+  }
+
+  function size(){
+    W=c.width=rest.width=tmp.width=Math.floor(innerWidth*dpr);
+    H=c.height=rest.height=tmp.height=Math.floor(innerHeight*dpr);
+    c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px';
+    cols=Math.ceil(W/cell);
+    build(); idleDrawn=false;
+  }
+
+  // One coin in its active state: a disc whose SECOND face (BACK tone) turns to
+  // point at the cursor — like an eye following the mouse. tilt 0 == resting.
+  function drawCoin(d){
+    var rr=d.r*(1+0.34*d.tilt);
+    var cx=d.hx+d.ox, cy=d.hy+d.oy;
+    // front / away face — brightens a touch as it wakes
+    x.beginPath(); x.arc(cx,cy,rr,0,Math.PI*2);
+    x.fillStyle='rgba('+FRONT+','+(REST_A+0.46*d.tilt).toFixed(3)+')'; x.fill();
+    if(d.tilt>0.02){
+      // the second face: a disc shifted toward the cursor, clipped inside
+      x.save();
+      x.beginPath(); x.arc(cx,cy,rr,0,Math.PI*2); x.clip();
+      var s=rr*0.82*d.tilt;
+      x.beginPath(); x.arc(cx+Math.cos(d.aim)*s, cy+Math.sin(d.aim)*s, rr*0.74, 0, Math.PI*2);
+      x.fillStyle='rgba('+BACK+','+(0.66*d.tilt).toFixed(3)+')'; x.fill();
+      // thin warm highlight on the leading edge, for a hint of dimension
+      x.beginPath(); x.arc(cx-Math.cos(d.aim)*rr*0.3, cy-Math.sin(d.aim)*rr*0.3, rr*0.5, 0, Math.PI*2);
+      x.fillStyle='rgba(244,224,178,'+(0.16*d.tilt).toFixed(3)+')'; x.fill();
+      x.restore();
+    }
+  }
+
+  function angLerp(a,b,f){ var dff=Math.atan2(Math.sin(b-a),Math.cos(b-a)); return a+dff*f; }
+
+  var tick=0;
+
+  function frame(){
+    tick++;
+    // 1) Gather ONLY the coins in the 3x3 grid cells around the cursor.
+    if(mouse.on){
+      var mcx=Math.floor(mouse.x/cell), mcy=Math.floor(mouse.y/cell);
+      for(var gx=mcx-1; gx<=mcx+1; gx++){
+        for(var gy=mcy-1; gy<=mcy+1; gy++){
+          var bucket=grid[key(gx,gy)]; if(!bucket) continue;
+          for(var b=0;b<bucket.length;b++){
+            var idx=bucket[b], d=coins[idx];
+            var dx=mouse.x-d.hx, dy=mouse.y-d.hy, dist=Math.hypot(dx,dy);
+            if(dist>R) continue;
+            var p=smooth(1-dist/R);
+            d.tp=p; d._seen=tick;
+            if(dist>0.001) d.aim=angLerp(d.aim, Math.atan2(dy,dx), 0.35); // face the cursor
+            // push away, but fade out right under the cursor so it stays gripped
+            var fade=Math.min(1, dist/(d.r*2.2));
+            d._tox=-(dx/(dist||1))*PUSH*p*fade;
+            d._toy=-(dy/(dist||1))*PUSH*p*fade;
+            active[idx]=d;
+          }
+        }
+      }
+    }
+
+    // 2) Ease every ACTIVE coin; coins not refreshed this frame relax home.
+    var anyActive=false, k;
+    for(k in active){
+      var d2=active[k];
+      if(d2.tp===undefined) d2.tp=0;
+      // was it touched this frame? if not, relax targets to rest
+      if(d2._seen!==tick){ d2.tp=0; d2._tox=0; d2._toy=0; }
+      d2.tilt += (d2.tp - d2.tilt)*0.20;
+      d2.ox   += ((d2._tox||0) - d2.ox)*0.20;
+      d2.oy   += ((d2._toy||0) - d2.oy)*0.20;
+      if(d2.tilt<0.012 && Math.abs(d2.ox)<0.4 && Math.abs(d2.oy)<0.4 && d2.tp===0){
+        d2.tilt=0; d2.ox=0; d2.oy=0; delete active[k];
+      } else { anyActive=true; }
+    }
+
+    // 3) Render: cached rest field (one draw) + the handful of active coins.
+    if(anyActive || !idleDrawn){
+      x.clearRect(0,0,W,H);
+      x.drawImage(rest,0,0);
+      for(k in active) drawCoin(active[k]);
+      idleDrawn = !anyActive;     // when nothing moves, we've drawn the final rest frame
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function smooth(p){ return p*p*(3-2*p); }
+
+  // Only react over the bare background — not the card/links/avatar, and not
+  // when the pointer leaves the window.
+  function overContent(cx,cy){
+    var el=document.elementFromPoint(cx,cy);
+    return !!(el && el.closest && el.closest('.bio-card'));
+  }
+  function setMouse(e){
+    mouse.x=e.clientX*dpr; mouse.y=e.clientY*dpr;
+    mouse.on=!overContent(e.clientX,e.clientY);
+  }
+  addEventListener('resize',size,{passive:true});
+  addEventListener('pointermove',setMouse,{passive:true});
+  addEventListener('pointerdown',setMouse,{passive:true});
+  addEventListener('pointerleave',function(){ mouse.on=false; },{passive:true});
+  addEventListener('blur',function(){ mouse.on=false; });
+  size();
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>

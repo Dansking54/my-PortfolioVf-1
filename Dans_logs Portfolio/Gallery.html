@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Gallery">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dan — Photographer & Filmmaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<script src="lib/image-slot.js"></script>
+<style>
+  :root{
+    --paper:#f3efe6;
+    --paper-2:#ece6da;
+    --ink:#17140f;
+    --muted:#736b5d;
+    --accent:#a9762e;
+    --sand:#d4b483;
+    --line:rgba(23,20,15,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',sans-serif;
+    font-size:18px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;
+  }
+  .serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 40px;
+    mix-blend-mode:difference;color:#fff;
+  }
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.02em}
+  .logo b{color:var(--sand)}
+  nav{display:flex;gap:34px}
+  nav a{font-size:14px;font-weight:500;letter-spacing:.02em;opacity:.85;transition:opacity .2s}
+  nav a:hover{opacity:1}
+  @media(max-width:760px){nav{display:none}}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;height:100vh;min-height:640px}
+  .hero image-slot{position:absolute;inset:0;width:100%;height:100%}
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.32),rgba(0,0,0,0) 32%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55));
+    pointer-events:none;z-index:1;
+  }
+  .hero-copy{
+    position:absolute;left:40px;right:40px;bottom:54px;z-index:2;color:#f7f2e8;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;
+  }
+  .hero-copy h1{
+    font-size:clamp(56px,9vw,140px);line-height:.92;font-weight:800;letter-spacing:-.03em;
+    text-wrap:balance;
+  }
+  .hero-copy h1 span{display:block;font-weight:300}
+  .hero-sub{max-width:340px;font-size:16px;line-height:1.55;color:rgba(247,242,232,.86);text-align:right}
+  .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;color:#f7f2e8;
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.7;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:120px 0}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:54px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(34px,5vw,68px);font-weight:800;letter-spacing:-.025em;line-height:1}
+  .sec-head .idx{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:var(--accent)}
+  .sec-head p{max-width:420px;color:var(--muted);font-size:16px}
+
+  /* ---------- Work grid ---------- */
+  .work-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+  .work-grid image-slot{width:100%;height:100%}
+  .tile{position:relative;overflow:hidden;background:var(--paper-2)}
+  .tile .cap{position:absolute;left:14px;bottom:12px;z-index:3;color:#fff;font-size:13px;font-weight:600;
+    letter-spacing:.02em;text-shadow:0 1px 8px rgba(0,0,0,.5);opacity:0;transform:translateY(6px);transition:.3s}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.5),transparent 45%);
+    opacity:0;transition:.3s;z-index:2;pointer-events:none}
+  .tile:hover .cap,.tile:hover::after{opacity:1;transform:none}
+  .t-wide{grid-column:span 4}
+  .t-tall{grid-column:span 2;grid-row:span 2}
+  .t-sq{grid-column:span 2}
+  .t-half{grid-column:span 3}
+  @media(max-width:760px){
+    .work-grid{grid-template-columns:repeat(2,1fr)}
+    .t-wide,.t-tall,.t-sq,.t-half{grid-column:span 2;grid-row:auto}
+  }
+
+  /* ---------- Film ---------- */
+  .film{background:var(--ink);color:var(--paper)}
+  .film .sec-head h2{color:var(--paper)}
+  .film .sec-head p{color:rgba(243,239,230,.6)}
+  .film .eyebrow{color:var(--sand)}
+  .reel{position:relative;aspect-ratio:21/9;width:100%;overflow:hidden;background:#000}
+  .reel image-slot{width:100%;height:100%}
+  .reel .play{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;
+    pointer-events:none}
+  .reel .play span{width:92px;height:92px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);
+    display:flex;align-items:center;justify-content:center;backdrop-filter:blur(2px);background:rgba(0,0,0,.18);
+    transition:.3s}
+  .reel:hover .play span{background:var(--sand);border-color:var(--sand);transform:scale(1.06)}
+  .reel .play svg{width:26px;height:26px;margin-left:4px;fill:#fff}
+  .reel:hover .play svg{fill:#17140f}
+  .reel .label{position:absolute;left:26px;bottom:22px;z-index:3;color:#fff}
+  .reel .label b{font-size:22px;font-weight:700;display:block}
+  .reel .label em{font-style:normal;font-size:13px;opacity:.75;letter-spacing:.04em}
+  .film-list{margin-top:14px;border-top:1px solid rgba(243,239,230,.16)}
+  .film-row{display:grid;grid-template-columns:46px 1fr auto auto;gap:24px;align-items:center;
+    padding:22px 4px;border-bottom:1px solid rgba(243,239,230,.16);transition:.25s;cursor:pointer}
+  .film-row:hover{padding-left:16px;background:rgba(212,180,131,.06)}
+  .film-row .no{font-family:'Instrument Serif',serif;font-style:italic;color:var(--sand);font-size:18px}
+  .film-row .ti{font-size:20px;font-weight:600}
+  .film-row .ty{color:rgba(243,239,230,.55);font-size:14px}
+  .film-row .yr{color:rgba(243,239,230,.4);font-size:14px;font-variant-numeric:tabular-nums}
+  @media(max-width:600px){.film-row{grid-template-columns:32px 1fr;gap:10px}.film-row .ty,.film-row .yr{display:none}}
+
+  /* ---------- About ---------- */
+  .about{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+  .about image-slot{width:100%;aspect-ratio:4/5}
+  .about .bio h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1.04;margin-bottom:26px}
+  .about .bio p{color:var(--muted);margin-bottom:18px;max-width:48ch;font-size:17px}
+  .about .bio .lead{color:var(--ink);font-size:21px;line-height:1.5}
+  .facts{display:flex;gap:40px;margin-top:34px;flex-wrap:wrap}
+  .facts div b{display:block;font-size:30px;font-weight:800;letter-spacing:-.02em}
+  .facts div span{font-size:13px;color:var(--muted);letter-spacing:.02em}
+  @media(max-width:820px){.about{grid-template-columns:1fr;gap:36px}}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--paper-2)}
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .svc{background:var(--paper-2);padding:42px 38px;transition:.3s}
+  .svc:hover{background:var(--paper)}
+  .svc h3{font-size:25px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px;display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+  .svc h3 .price{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:var(--accent);font-weight:400;white-space:nowrap}
+  .svc p{color:var(--muted);font-size:15px;margin-bottom:16px}
+  .svc ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .svc li{font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--ink)}
+  .svc.minor{background:transparent}
+  .svc.minor h3{font-size:19px}
+  @media(max-width:700px){.svc-grid{grid-template-columns:1fr}}
+
+  /* ---------- Contact ---------- */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .contact h2{font-size:clamp(36px,6vw,84px);font-weight:800;letter-spacing:-.03em;line-height:.95;margin-bottom:24px}
+  .contact .lead{color:var(--muted);max-width:38ch;margin-bottom:30px;font-size:17px}
+  .contact a.big{font-size:23px;font-weight:600;border-bottom:2px solid var(--sand);padding-bottom:3px;display:inline-block}
+  .form{display:flex;flex-direction:column;gap:16px}
+  .form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form label{display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .form input,.form textarea{font-family:inherit;font-size:16px;color:var(--ink);background:transparent;
+    border:none;border-bottom:1.5px solid var(--line);padding:10px 2px;transition:.25s}
+  .form input:focus,.form textarea:focus{outline:none;border-color:var(--accent)}
+  .form textarea{resize:vertical;min-height:90px}
+  .btn{align-self:flex-start;background:var(--ink);color:var(--paper);border:none;font-family:inherit;
+    font-size:15px;font-weight:600;letter-spacing:.02em;padding:15px 34px;border-radius:999px;cursor:pointer;transition:.25s;margin-top:6px}
+  .btn:hover{background:var(--accent)}
+  @media(max-width:760px){.contact{grid-template-columns:1fr;gap:40px}.form .row{grid-template-columns:1fr}}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding:40px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer .logo{color:var(--ink);font-size:18px}
+  footer .ig{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px}
+  footer .ig svg{width:18px;height:18px}
+  footer small{color:var(--muted);font-size:13px}
+  footer .ig:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#top">Dan<b>.</b></a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#film">Film</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div id="top" class="hero">
+  <image-slot id="hero" src="assets/hero-goldenhour.jpg" placeholder="Drop your hero photo"></image-slot>
+  <div class="hero-copy">
+    <h1>Dan<span>visual storyteller</span></h1>
+    <p class="hero-sub">Photographer &amp; filmmaker chasing golden light, honest faces, and the quiet moments in between.</p>
+  </div>
+  <div class="scrollcue">Scroll</div>
+</div>
+
+<section id="work" class="wrap">
+  <div class="sec-head">
+    <div>
+      <div class="eyebrow">Selected Work</div>
+      <h2>Photography</h2>
+    </div>
+    <p>Portraits, weddings &amp; events, brand work, and the streets in between — shot on the edge of daylight.</p>
+  </div>
+  <div class="work-grid">
+    <div class="tile t-wide" style="aspect-ratio:2/1"><image-slot id="w1" src="assets/hero-goldenhour.jpg" placeholder="Street"></image-slot><div class="cap">Street · Golden Hour</div></div>
+    <div class="tile t-tall"><image-slot id="w2" placeholder="Portrait"></image-slot><div class="cap">Portrait</div></div>
+    <div class="tile t-sq" style="aspect-ratio:1"><image-slot id="w3" placeholder="Wedding"></image-slot><div class="cap">Weddings &amp; Events</div></div>
+    <div class="tile t-half" style="aspect-ratio:3/2"><image-slot id="w4" placeholder="Brand"></image-slot><div class="cap">Brand &amp; Commercial</div></div>
+    <div class="tile t-half" style="aspect-ratio:3/2"><image-slot id="w5" placeholder="Documentary"></image-slot><div class="cap">Documentary</div></div>
+    <div class="tile t-sq" style="aspect-ratio:1"><image-slot id="w6" placeholder="Portrait"></image-slot><div class="cap">Portrait</div></div>
+  </div>
+</section>
+
+<section id="film" class="film">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Motion</div>
+        <h2>Film &amp; Reel</h2>
+      </div>
+      <p>Music videos, short films and event films — composed like photographs, moving like memory.</p>
+    </div>
+    <div class="reel">
+      <image-slot id="reel" src="assets/hero-goldenhour.jpg" placeholder="Drop a reel still"></image-slot>
+      <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="label"><b>2025 Showreel</b><em>A year in motion — 2:14</em></div>
+    </div>
+    <div class="film-list">
+      <div class="film-row"><span class="no">01</span><span class="ti">Neon &amp; Nightfall</span><span class="ty">Music Video</span><span class="yr">2025</span></div>
+      <div class="film-row"><span class="no">02</span><span class="ti">The Long Drive Home</span><span class="ty">Short Film</span><span class="yr">2024</span></div>
+      <div class="film-row"><span class="no">03</span><span class="ti">M &amp; J — A Wedding Film</span><span class="ty">Event Film</span><span class="yr">2024</span></div>
+      <div class="film-row"><span class="no">04</span><span class="ti">Concrete Gardens</span><span class="ty">Documentary</span><span class="yr">2023</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="wrap">
+  <div class="about">
+    <image-slot id="portrait" placeholder="Drop a photo of you"></image-slot>
+    <div class="bio">
+      <div class="eyebrow" style="margin-bottom:18px">About</div>
+      <h2>I shoot the in-between.</h2>
+      <p class="lead">I'm Dan — a photographer and filmmaker drawn to warm light, real faces, and the texture of ordinary places.</p>
+      <p>Whether it's a portrait, a wedding, a brand campaign or a short film, my work lives in the honest moments most people walk past. I shoot stills and motion with the same instinct: wait, watch, and press at the right second.</p>
+      <div class="facts">
+        <div><b>120+</b><span>Shoots delivered</span></div>
+        <div><b>40+</b><span>Films &amp; reels</span></div>
+        <div><b>6 yrs</b><span>Behind the lens</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Work With Me</div>
+        <h2>Services</h2>
+      </div>
+      <p>Booked as a package or a day rate. Every project starts with a conversation — tell me what you're making.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <h3>Photography<span class="price">from $250</span></h3>
+        <p>Portraits, weddings &amp; events, brand and editorial sessions.</p>
+        <ul><li>Portraits</li><li>Weddings &amp; Events</li><li>Brand &amp; Commercial</li><li>Documentary</li></ul>
+      </div>
+      <div class="svc">
+        <h3>Film &amp; Video<span class="price">from $800</span></h3>
+        <p>Music videos, short films, event films and social reels — concept to final grade.</p>
+        <ul><li>Music Videos</li><li>Short Films</li><li>Event Films</li><li>Reels</li></ul>
+      </div>
+      <div class="svc minor">
+        <h3>Also: Design<span class="price">from $300</span></h3>
+        <p>Web design, flyers &amp; simple visual identity to round out a project.</p>
+        <ul><li>Web Design</li><li>Flyers</li></ul>
+      </div>
+      <div class="svc minor">
+        <h3>Something else?<span class="price">let's talk</span></h3>
+        <p>Half-day and full-day rates, retainers, and collaborations welcome.</p>
+        <ul><li>Day Rates</li><li>Collabs</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="contact">
+    <div>
+      <div class="eyebrow" style="margin-bottom:18px">Contact</div>
+      <h2>Let's make something.</h2>
+      <p class="lead">Got a shoot, a film, or just an idea? Tell me about it — I reply to everything.</p>
+      <a class="big" href="mailto:hello@danslogs.com">hello@danslogs.com</a>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Sent — talk soon ♥'">
+      <div class="row">
+        <label>Name<input type="text" placeholder="Your name" required /></label>
+        <label>Email<input type="email" placeholder="you@email.com" required /></label>
+      </div>
+      <label>Project<input type="text" placeholder="Portrait, wedding, music video…" /></label>
+      <label>Message<textarea placeholder="Tell me what you're making."></textarea></label>
+      <button class="btn" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <a class="logo" href="#top">Dan<b>.</b></a>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @dans_logs
+  </a>
+  <small>© 2026 Dan — Photographer &amp; Filmmaker</small>
+</footer>
+<script>
+if(location.search.indexOf('preview')>-1){
+  var s=document.createElement('style');
+  s.textContent='.hero{height:760px!important;min-height:0!important}';
+  document.head.appendChild(s);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Home">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dan — Photographer &amp; Filmmaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script src="lib/image-slot.js"></script>
+<style>
+  /* Hero — A's banner layout, B's cinematic energy */
+  .hero{position:relative;height:100vh;min-height:660px;overflow:hidden}
+  .hero image-slot{position:absolute;inset:0;width:100%;height:100%;filter:saturate(1.05) contrast(1.04)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(11,10,8,.5),rgba(11,10,8,0) 30%,rgba(11,10,8,0) 52%,rgba(11,10,8,.78));pointer-events:none}
+  .bar{position:absolute;left:0;right:0;height:44px;z-index:3;background:var(--bg)}
+  .bar.top{top:0}.bar.bot{bottom:0}
+  .hero-copy{position:absolute;left:44px;right:44px;bottom:92px;z-index:4;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .hero-copy h1{font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(72px,12vw,190px);line-height:.84;letter-spacing:.01em;color:var(--ink)}
+  .hero-copy h1 .vs{display:block;font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;
+    font-size:clamp(26px,3.4vw,54px);letter-spacing:0;color:var(--amber);margin-top:14px}
+  .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:22px;max-width:360px;text-align:right}
+  .hero-right p{font-size:16px;line-height:1.6;color:rgba(242,236,224,.85)}
+  .watch .ic{width:34px;height:34px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .watch .ic svg{width:13px;height:13px;fill:#161208;margin-left:2px}
+  .watch:hover .ic{background:#161208}
+  .watch:hover .ic svg{fill:var(--amber)}
+  .tc{position:absolute;right:44px;top:64px;z-index:4;font-variant-numeric:tabular-nums;color:rgba(242,236,224,.55);font-size:12.5px;letter-spacing:.12em}
+  @media(max-width:760px){.hero-copy{left:22px;right:22px;bottom:74px}.hero-right{align-items:flex-start;text-align:left}}
+
+  section{padding:110px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+  .sec-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(36px,5.5vw,76px);line-height:.9;margin-top:12px}
+  .sec-head h2 em{font-style:italic;font-family:'Instrument Serif',serif;text-transform:none;color:var(--amber)}
+  .sec-head p{max-width:380px;color:var(--muted);font-size:16px}
+  .sec-head .more{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);white-space:nowrap}
+  .sec-head .more:hover{color:var(--amber-hi)}
+
+  /* Featured stills strip */
+  .strip{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
+  .strip a{position:relative;overflow:hidden;background:#000;display:block}
+  .strip img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .strip a:hover img{transform:scale(1.04)}
+  .strip a{aspect-ratio:4/5}
+  .strip a.wide{aspect-ratio:auto}
+  .strip .cap{position:absolute;left:16px;bottom:14px;z-index:3;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+    opacity:0;transform:translateY(6px);transition:.3s}
+  .strip a::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 50%);opacity:0;transition:.3s}
+  .strip a:hover .cap,.strip a:hover::after{opacity:1;transform:none}
+  @media(max-width:760px){.strip{grid-template-columns:1fr}.strip a,.strip a.wide{aspect-ratio:16/10}}
+
+  /* Reel teaser */
+  .reel-teaser{position:relative;display:block;aspect-ratio:21/9;overflow:hidden;background:#000;border:1px solid var(--line)}
+  .reel-teaser img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reel-teaser:hover img{transform:scale(1.03)}
+  .reel-teaser::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent 55%)}
+  .reel-teaser .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3}
+  .reel-teaser .play span{width:100px;height:100px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);
+    display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.22);transition:.3s}
+  .reel-teaser:hover .play span{background:var(--amber);border-color:var(--amber);transform:scale(1.06)}
+  .reel-teaser .play svg{width:28px;height:28px;fill:#fff;margin-left:5px}
+  .reel-teaser:hover .play svg{fill:#161208}
+  .reel-teaser .meta{position:absolute;left:28px;bottom:24px;z-index:4}
+  .reel-teaser .meta b{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:28px;display:block;color:#fff}
+  .reel-teaser .meta em{font-style:normal;color:rgba(242,236,224,.7);font-size:14px}
+
+  /* CTA */
+  .cta{text-align:center;border-top:1px solid var(--line)}
+  .cta h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(54px,12vw,170px);line-height:.86;margin:18px 0 30px}
+  .cta h2 em{font-style:normal;-webkit-text-stroke:1.5px var(--amber);color:transparent}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <nav>
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a class="nav-cta" href="Contact.html">Let's roll →</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <image-slot id="hero" src="assets/hero-goldenhour.jpg" placeholder="Drop your hero photo or reel frame"></image-slot>
+  <div class="bar top"></div>
+  <div class="bar bot"></div>
+  <div class="tc">MTL · 00:00:14:08 · f/1.8</div>
+  <div class="hero-copy">
+    <h1>Dan<span class="vs">visual storyteller.</span></h1>
+    <div class="hero-right">
+      <p>Photographer &amp; filmmaker chasing golden light, honest faces, and the quiet moments in between.</p>
+      <a class="btn-ghost watch" href="Film.html"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span> Watch my films</a>
+    </div>
+  </div>
+</div>
+
+<section class="wrap">
+  <div class="sec-head rv">
+    <div>
+      <div class="eyebrow">Selected Work</div>
+      <h2>Stills</h2>
+    </div>
+    <a class="more" href="Photography.html">Full gallery →</a>
+  </div>
+  <div class="strip rv">
+    <a class="wide" href="Photography.html"><img src="assets/goldenhour-biosphere.jpg" alt="Golden hour over the Biosphère" /><span class="cap">Street · Golden Hour</span></a>
+    <a href="Photography.html"><img src="assets/fog-montreal.jpg" alt="Foggy towers, Montréal" /><span class="cap">City · Fog</span></a>
+    <a href="Photography.html"><img src="assets/graffiti-bw.jpg" alt="Rooftop graffiti, black and white" style="object-position:60% 50%" /><span class="cap">Documentary · B&amp;W</span></a>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:0">
+  <div class="sec-head rv">
+    <div>
+      <div class="eyebrow">Motion</div>
+      <h2>Films</h2>
+    </div>
+    <a class="more" href="Film.html">All films →</a>
+  </div>
+  <a class="reel-teaser rv" href="Film.html">
+    <img src="assets/be-cinematic.jpeg" alt="Be Cinematic — showreel still" />
+    <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span></div>
+    <div class="meta"><b>Be Cinematic</b><em>Films &amp; music videos — on YouTube</em></div>
+  </a>
+</section>
+
+<section class="cta">
+  <div class="wrap rv">
+    <div class="eyebrow">Got a project?</div>
+    <h2>Let's <em>roll</em></h2>
+    <a class="btn-amber" href="Contact.html">Get in touch</a>
+  </div>
+</section>
+
+<footer class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <a class="ig" href="https://www.youtube.com/@dans_logs" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"></path></svg>
+    YouTube
+  </a>
+  <small>© 2026 Dan — Photographer &amp; Filmmaker</small>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

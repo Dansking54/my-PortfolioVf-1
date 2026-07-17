@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Photography">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photography — Dan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script src="lib/image-slot.js"></script>
+<style>
+  /* Filters */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+  .chip{font-family:'Archivo',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:9px 20px;background:transparent;cursor:pointer;transition:.25s}
+  .chip:hover{color:var(--ink);border-color:rgba(242,236,224,.35)}
+  .chip.on{background:var(--amber);border-color:var(--amber);color:#161208}
+
+  /* Masonry */
+  .masonry{columns:3;column-gap:14px}
+  @media(max-width:1000px){.masonry{columns:2}}
+  @media(max-width:620px){.masonry{columns:1}}
+  .ph{position:relative;break-inside:avoid;margin-bottom:14px;overflow:hidden;background:var(--bg-2);cursor:zoom-in}
+  .ph img{width:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .ph:hover img{transform:scale(1.03)}
+  .ph .cap{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:38px 16px 13px;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent);
+    opacity:0;transform:translateY(8px);transition:.3s;pointer-events:none}
+  .ph:hover .cap{opacity:1;transform:none}
+  .ph .cap b{color:#fff;font-size:14px;font-weight:600;letter-spacing:.02em}
+  .ph .cap span{color:rgba(255,255,255,.7);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .ph.slot{cursor:default}
+  .ph.slot image-slot{width:100%;display:block}
+  .ph.hide{display:none}
+
+  /* Lightbox */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(8,7,5,.94);display:none;align-items:center;justify-content:center;padding:48px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .lb .x{position:absolute;top:26px;right:32px;font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);background:none;border:none;cursor:pointer}
+  .lb .x:hover{color:var(--ink)}
+  .lb .lcap{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:var(--muted);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+
+  .note{margin-top:46px;color:var(--muted);font-size:14.5px;border:1px dashed var(--line);padding:18px 22px;max-width:640px}
+  .note b{color:var(--amber);font-weight:600}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <nav>
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a class="nav-cta" href="Contact.html">Let's roll →</a>
+  </nav>
+</header>
+
+<div class="page-head wrap">
+  <div class="eyebrow">Selected Work</div>
+  <h1>Photo<em>graphy</em></h1>
+  <p class="sub">Portraits, weddings &amp; events, brand work and the streets of Montréal in between — shot on the edge of daylight.</p>
+</div>
+
+<div class="wrap" style="padding-bottom:40px">
+  <div class="filters rv" role="tablist" aria-label="Filter photos">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="street">Street</button>
+    <button class="chip" data-f="portrait">Portraits</button>
+    <button class="chip" data-f="events">Weddings &amp; Events</button>
+    <button class="chip" data-f="brand">Brand</button>
+  </div>
+
+  <div class="masonry">
+    <figure class="ph rv" data-cat="street" data-cap="Golden hour, off the overpass" data-cat-label="Street">
+      <img src="assets/hero-goldenhour.jpg" alt="Golden hour over the overpass" />
+      <figcaption class="cap"><b>Golden hour, off the overpass</b><span>Street</span></figcaption>
+    </figure>
+    <figure class="ph rv" data-cat="street" data-cap="Biosphère at sundown" data-cat-label="Street">
+      <img src="assets/goldenhour-biosphere.jpg" alt="Golden hour cars and the Biosphère" />
+      <figcaption class="cap"><b>Biosphère at sundown</b><span>Street</span></figcaption>
+    </figure>
+    <figure class="ph rv slot" data-cat="portrait">
+      <image-slot id="g-portrait1" placeholder="Drop a portrait" style="aspect-ratio:4/5"></image-slot>
+    </figure>
+    <figure class="ph rv" data-cat="street" data-cap="Fog over the 10" data-cat-label="City">
+      <img src="assets/fog-montreal.jpg" alt="Foggy towers above Pont Victoria signage" />
+      <figcaption class="cap"><b>Fog over the 10</b><span>City</span></figcaption>
+    </figure>
+    <figure class="ph rv" data-cat="street" data-cap="Rooftops, all city" data-cat-label="Documentary · B&amp;W">
+      <img src="assets/graffiti-bw.jpg" alt="Rooftop graffiti panorama in black and white" />
+      <figcaption class="cap"><b>Rooftops, all city</b><span>Documentary</span></figcaption>
+    </figure>
+    <figure class="ph rv slot" data-cat="events">
+      <image-slot id="g-wedding1" placeholder="Drop a wedding / event shot" style="aspect-ratio:3/4"></image-slot>
+    </figure>
+    <figure class="ph rv slot" data-cat="brand">
+      <image-slot id="g-brand1" placeholder="Drop a brand / commercial shot" style="aspect-ratio:4/3"></image-slot>
+    </figure>
+    <figure class="ph rv slot" data-cat="portrait">
+      <image-slot id="g-portrait2" placeholder="Drop a portrait" style="aspect-ratio:3/4"></image-slot>
+    </figure>
+    <figure class="ph rv slot" data-cat="events">
+      <image-slot id="g-wedding2" placeholder="Drop a wedding / event shot" style="aspect-ratio:1/1"></image-slot>
+    </figure>
+  </div>
+
+  <p class="note rv"><b>Tip:</b> drag photos from your computer onto the dashed boxes to fill the gallery — they save automatically. Click any photo to view it fullscreen.</p>
+</div>
+
+<div class="lb" id="lb">
+  <button class="x" type="button">Close ✕</button>
+  <img id="lb-img" src="" alt="" />
+  <div class="lcap" id="lb-cap"></div>
+</div>
+
+<footer class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <a class="ig" href="https://www.youtube.com/@dans_logs" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"></path></svg>
+    YouTube
+  </a>
+  <small>© 2026 Dan — Photographer &amp; Filmmaker</small>
+</footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  // Filters
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (x) { x.classList.remove('on'); });
+      c.classList.add('on');
+      var f = c.getAttribute('data-f');
+      document.querySelectorAll('.ph').forEach(function (p) {
+        var show = (f === 'all') || (p.getAttribute('data-cat') === f);
+        p.classList.toggle('hide', !show);
+      });
+    });
+  });
+
+  // Lightbox (real images only)
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-cap');
+  document.querySelectorAll('.ph:not(.slot)').forEach(function (p) {
+    p.addEventListener('click', function () {
+      var img = p.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = (p.getAttribute('data-cap') || '') + '  —  ' + (p.getAttribute('data-cat-label') || '');
+      lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click', function () { lb.classList.remove('open'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { lb.classList.remove('open'); } });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="About">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Dan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<script src="lib/image-slot.js"></script>
+<style>
+  .about{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+  .about image-slot{width:100%;aspect-ratio:4/5;filter:grayscale(.12) contrast(1.05)}
+  .about .lead{font-size:22px;line-height:1.55;color:var(--ink);margin-bottom:18px}
+  .about .lead em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--amber)}
+  .about p{color:var(--muted);margin-bottom:18px;max-width:50ch}
+  @media(max-width:840px){.about{grid-template-columns:1fr;gap:38px}}
+
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:80px}
+  .fact{border:1px solid var(--line);padding:34px 30px;transition:.3s}
+  .fact:hover{border-color:var(--amber);background:rgba(212,180,131,.05)}
+  .fact b{font-family:'Anton',sans-serif;font-size:54px;display:block;color:var(--amber);line-height:1}
+  .fact span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-top:10px}
+  @media(max-width:700px){.facts{grid-template-columns:1fr}}
+
+  .gear{margin-top:90px}
+  .gear h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(26px,3.6vw,44px);margin-bottom:26px}
+  .gear ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+  .gear li{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:9px 18px;border-radius:999px}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <nav>
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a class="nav-cta" href="Contact.html">Let's roll →</a>
+  </nav>
+</header>
+
+<div class="page-head wrap">
+  <div class="eyebrow">About</div>
+  <h1>Behind <em>the camera</em></h1>
+</div>
+
+<div class="wrap">
+  <div class="about rv">
+    <image-slot id="portrait" placeholder="Drop a photo of you"></image-slot>
+    <div>
+      <p class="lead">I'm Dan — a photographer and filmmaker from Montréal, drawn to warm light, real faces, and the texture of <em>ordinary places.</em></p>
+      <p>Whether it's a portrait, a wedding, a brand campaign or a short film, my work lives in the honest moments most people walk past. I shoot stills and motion with the same instinct: wait, watch, and press at the right second.</p>
+      <p>When I'm not behind a camera I'm designing — sites, flyers, the occasional visual identity — but the lens always comes first.</p>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="fact rv"><b>6 yrs</b><span>Behind the lens</span></div>
+    <div class="fact rv"><b>120+</b><span>Shoots delivered</span></div>
+    <div class="fact rv"><b>40+</b><span>Films &amp; reels</span></div>
+  </div>
+
+  <div class="gear rv">
+    <h2>What I work with</h2>
+    <ul>
+      <li>Stills · Full Frame</li>
+      <li>Cinema · 4K / Log</li>
+      <li>Primes over zooms</li>
+      <li>Natural light first</li>
+      <li>Color grade · DaVinci</li>
+      <li>Edit · Premiere</li>
+    </ul>
+  </div>
+</div>
+
+<footer class="site">
+  <a class="logo" href="Home.html">DAN<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <a class="ig" href="https://www.youtube.com/@dans_logs" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"></path></svg>
+    YouTube
+  </a>
+  <small>© 2026 Dan — Photographer &amp; Filmmaker</small>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+/* ===== Dan's Logs — shared site styles ===== */
+:root{
+  --paper:#f3efe6;
+  --paper2:#ece6da;
+  --ink:#17140f;
+  --muted:#736b5d;
+  --accent:#a9762e;
+  --sand:#d4b483;
+  --line:rgba(23,20,15,.14);
+}
+body.dark{
+  --paper:#0b0a08;
+  --paper2:#141210;
+  --ink:#f2ece0;
+  --muted:#8c8579;
+  --accent:#d4b483;
+  --line:rgba(242,236,224,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:'Archivo',sans-serif;font-size:18px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1340px;margin:0 auto;padding:0 40px}
+.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+/* ===== Header (blur, fixed) ===== */
+header.site{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:15px 40px;
+  background:transparent;border-bottom:1px solid transparent;
+  transition:background .35s,border-color .35s,backdrop-filter .35s;
+}
+header.site.scrolled{
+  background:color-mix(in srgb,var(--paper) 70%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+header.site .logo{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+header.site .logo b{color:var(--sand)}
+header.site nav{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none}
+header.site nav::-webkit-scrollbar{display:none}
+header.site nav a{
+  font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 13px;border-radius:999px;color:var(--muted);transition:.2s;white-space:nowrap;
+}
+header.site nav a:hover{color:var(--ink)}
+header.site nav a.active{color:var(--ink);background:color-mix(in srgb,var(--sand) 28%,transparent)}
+header.site nav a.ig{border:1px solid var(--line);color:var(--ink)}
+header.site nav a.ig:hover{border-color:var(--accent);color:var(--accent)}
+header.site.on-photo{color:#f7f2e8}
+header.site.on-photo:not(.scrolled) .logo,
+header.site.on-photo:not(.scrolled) nav a{color:#f7f2e8}
+header.site.on-photo:not(.scrolled) nav a.active{background:rgba(255,255,255,.18)}
+header.site.on-photo:not(.scrolled) nav a.ig{border-color:rgba(255,255,255,.35)}
+@media(max-width:880px){
+  header.site{padding:12px 18px}
+  header.site nav a{font-size:11px;padding:6px 9px}
+}
+
+/* ===== Page head (interior pages) ===== */
+.page-head{padding:170px 0 56px}
+.page-head .marker{display:flex;align-items:baseline;gap:18px;border-top:2px solid var(--ink);padding-top:20px;flex-wrap:wrap}
+.page-head .marker .n{font-family:'Anton',sans-serif;font-size:19px;color:var(--accent)}
+.page-head .marker h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(44px,8vw,110px);line-height:.9;letter-spacing:.01em}
+.page-head .marker h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+.page-head .marker .meta{margin-left:auto;color:var(--muted);font-size:15px;max-width:340px;text-align:right}
+@media(max-width:700px){.page-head{padding:140px 0 40px}.page-head .marker .meta{margin-left:0;text-align:left}}
+
+/* ===== Footer CTA band ===== */
+.cta-band{display:block;border-top:1px solid var(--line);padding:96px 40px;text-align:center;transition:.3s}
+.cta-band .eyebrow{margin-bottom:18px;display:block}
+.cta-band .big{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(54px,11vw,150px);line-height:.88;letter-spacing:.01em}
+.cta-band .big em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--accent);transition:.3s}
+.cta-band:hover .big em{color:var(--accent);-webkit-text-stroke:1.5px var(--accent)}
+.cta-band .sub{margin-top:20px;color:var(--muted);font-size:16px}
+.cta-band .sub b{color:var(--accent);font-weight:600}
+
+/* ===== Footer ===== */
+footer.site{border-top:1px solid var(--line);padding:34px 40px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer.site .logo{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:.04em;text-transform:uppercase}
+footer.site .logo b{color:var(--sand)}
+footer.site .ig{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px}
+footer.site .ig svg{width:18px;height:18px}
+footer.site .ig:hover{color:var(--accent)}
+footer.site small{color:var(--muted);font-size:13px}
+footer.site .pages{display:flex;gap:18px;flex-wrap:wrap}
+footer.site .pages a{font-size:13px;color:var(--muted);letter-spacing:.04em}
+footer.site .pages a:hover{color:var(--ink)}
+
+/* ===== Forms / buttons ===== */
+.form{display:flex;flex-direction:column;gap:16px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form label{display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.form input,.form textarea{font-family:inherit;font-size:16px;color:var(--ink);background:transparent;
+  border:none;border-bottom:1.5px solid var(--line);padding:10px 2px;transition:.25s}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--accent)}
+.form textarea{resize:vertical;min-height:100px}
+.btn{align-self:flex-start;background:var(--ink);color:var(--paper);border:none;font-family:'Anton',sans-serif;
+  text-transform:uppercase;font-size:16px;letter-spacing:.05em;padding:15px 38px;border-radius:999px;cursor:pointer;transition:.25s;margin-top:6px}
+.btn:hover{background:var(--accent);color:#fff}
+@media(max-width:640px){.form .row{grid-template-columns:1fr}}
+
+/* ===== Caption rows under editorial photos ===== */
+.cap-row{display:flex;align-items:baseline;gap:16px;padding:14px 2px 0;flex-wrap:wrap}
+.cap-row .n{font-family:'Anton',sans-serif;font-size:14px;color:var(--accent)}
+.cap-row .t{font-weight:600;font-size:16px;letter-spacing:-.01em}
+.cap-row .c{color:var(--muted);font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
+.cap-row .y{margin-left:auto;color:var(--muted);font-size:13.5px;font-variant-numeric:tabular-nums}

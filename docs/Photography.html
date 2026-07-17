@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-screen-label="Photography">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photography — Dan's Logs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  .gal{padding-bottom:40px}
+  .block{margin-bottom:84px}
+  .feature{width:100%;overflow:hidden;background:var(--paper2)}
+  .feature img,.feature img{width:100%;height:100%;object-fit:cover}
+  .duo{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}
+  .duo .cell{display:flex;flex-direction:column}
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .frame{overflow:hidden;background:var(--paper2);position:relative}
+  .frame img,.frame img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .frame:hover img{transform:scale(1.03)}
+  .hint{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink);
+    background:var(--paper2);border:1px solid var(--line);padding:9px 16px;border-radius:999px;margin-top:22px}
+  .hint b{color:var(--accent)}
+  @media(max-width:760px){.duo,.trio{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site scrolled" id="hdr">
+  <a class="logo" href="index.html">Dan<b>.</b></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="Photography.html">Photography</a>
+    <a href="Gallery.html">Gallery</a>
+    <a href="Film.html">Film</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+    <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">@dans_logs ↗</a>
+  </nav>
+</header>
+
+<div class="page-head wrap">
+  <div class="marker">
+    <span class="n">01</span>
+    <h1>Photo<em>graphy</em></h1>
+    <span class="meta">Street, portraits, weddings &amp; brand — shot on the edge of daylight, in Montréal and wherever the light is good.</span>
+  </div>
+</div>
+
+<section class="gal wrap">
+  <div class="block">
+    <div class="feature" style="aspect-ratio:21/9">
+      <img src="assets/sunset-biosphere.jpg" alt="Sunset over parked cars, Biosphère in the distance" />
+    </div>
+    <div class="cap-row"><span class="n">P—01</span><span class="t">Last Light, Parc Jean-Drapeau</span><span class="c">Street / Documentary</span><span class="y">2025</span></div>
+  </div>
+
+  <div class="block duo">
+    <div class="cell">
+      <div class="frame" style="aspect-ratio:16/10"><img src="assets/graffiti-bw.jpg" alt="Black and white rooftop graffiti" /></div>
+      <div class="cap-row"><span class="n">P—02</span><span class="t">Rooftops Speak</span><span class="c">Street · B&amp;W Film</span><span class="y">2025</span></div>
+    </div>
+    <div class="cell">
+      <div class="frame" style="flex:1;min-height:320px"><img id="w2" src="assets/gallery/_mg_7568.jpg" alt="Portrait in available light" loading="lazy"></div>
+      <div class="cap-row"><span class="n">P—03</span><span class="t">Faces in Available Light</span><span class="c">Portraits</span><span class="y">2025</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="feature" style="aspect-ratio:21/10">
+      <img src="assets/fog-city.jpg" alt="Towers disappearing into fog, Montréal" />
+    </div>
+    <div class="cap-row"><span class="n">P—04</span><span class="t">Pont Victoria, Fog</span><span class="c">Street / Documentary</span><span class="y">2024</span></div>
+  </div>
+
+  <div class="block trio">
+    <div class="cell">
+      <div class="frame" style="aspect-ratio:4/5"><img id="w3" src="assets/gallery/_mg_7567.jpg" alt="Wedding photography" loading="lazy"></div>
+      <div class="cap-row"><span class="n">P—05</span><span class="t">M &amp; J, Late Summer</span><span class="c">Weddings &amp; Events</span></div>
+    </div>
+    <div class="cell">
+      <div class="frame" style="aspect-ratio:4/5"><img id="w4" src="assets/gallery/_mg_7566.jpg" alt="Brand campaign" loading="lazy"></div>
+      <div class="cap-row"><span class="n">P—06</span><span class="t">Brand Campaign</span><span class="c">Commercial</span></div>
+    </div>
+    <div class="cell">
+      <div class="frame" style="aspect-ratio:4/5"><img id="w6" src="assets/gallery/_mg_7557.jpg" alt="Portrait" loading="lazy"></div>
+      <div class="cap-row"><span class="n">P—07</span><span class="t">Untitled</span><span class="c">Portraits</span></div>
+    </div>
+  </div>
+</section>
+
+<a class="cta-band" href="Contact.html">
+  <span class="eyebrow">Like what you see?</span>
+  <span class="big display">Let's <em>Roll</em></span>
+  <span class="sub" style="display:block">Book a shoot — <b>danslogs.contact@gmail.com</b></span>
+</a>
+
+<footer class="site">
+  <a class="logo" href="index.html">Dan<b>.</b></a>
+  <div class="pages">
+    <a href="Photography.html">Photography</a>
+    <a href="Gallery.html">Gallery</a><a href="Film.html">Film</a><a href="About.html">About</a><a href="Services.html">Services</a><a href="Contact.html">Contact</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @dans_logs
+  </a>
+  <small>© 2026 Dan's Logs — Photographer &amp; Filmmaker, Montréal</small>
+</footer>
+
+<script>
+  var h=document.getElementById('hdr');
+  addEventListener('scroll',function(){h.classList.toggle('scrolled',scrollY>40||true)},{passive:true});
+</script>
+</body>
+</html>
