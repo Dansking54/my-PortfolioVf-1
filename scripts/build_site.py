@@ -24,7 +24,7 @@ SRC = os.path.join(ROOT, "Dans_logs Portfolio", "site")
 OUT = os.path.join(ROOT, "docs")
 
 PAGES = ["Home", "Photography", "Film", "About", "Services", "Contact",
-         "Project", "Links"]
+         "Project", "Links", "Latest"]
 
 # Which gallery photos fill the empty design frames. Filled from gallery.json:
 # portrait frames get tall photos, landscape frames get wide ones.
@@ -78,6 +78,13 @@ def transform(name, html):
     html = html.replace(
         "Photography</a>",
         'Photography</a>\n    <a href="Gallery.html">Gallery</a>')
+
+    # 8) add a Latest link right after every Film link (nav + footer),
+    #    unless the page already has one in its nav/footer (Latest.html itself)
+    if '<a href="Latest.html">Latest</a>' not in html:
+        html = html.replace(
+            'Film.html">Film</a>',
+            'Film.html">Film</a>\n    <a href="Latest.html">Latest</a>')
 
     return html
 
