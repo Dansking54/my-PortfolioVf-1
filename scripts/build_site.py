@@ -51,6 +51,64 @@ SLOT_FILLS = {
 }
 
 
+# Which top-level nav item is "active" for each page.
+NAV_GROUP = {
+    "Home": "home",
+    "Photography": "gallery", "Film": "gallery", "Latest": "gallery",
+    "Project": "gallery",
+    "About": "about", "Services": "about", "Contact": "about",
+}
+
+# The @dans_logs button target. TODO: swap for Dan's standalone bio-site link.
+BIOSITE_URL = "https://www.instagram.com/dans_logs/"
+
+
+def nav_html(active):
+    def a(group):
+        return ' class="active"' if active == group else ''
+    return (
+        '<nav>\n'
+        f'    <a{a("home")} href="index.html">Home</a>\n'
+        '    <span class="menu">\n'
+        f'      <a{a("gallery")} href="Gallery.html">Gallery <i class="caret">▾</i></a>\n'
+        '      <span class="submenu">\n'
+        '        <a href="Photography.html">Photography</a>\n'
+        '        <a href="Film.html">Film</a>\n'
+        '        <a href="Latest.html">Latest</a>\n'
+        '      </span>\n'
+        '    </span>\n'
+        '    <span class="menu">\n'
+        f'      <a{a("about")} href="About.html">About <i class="caret">▾</i></a>\n'
+        '      <span class="submenu">\n'
+        '        <a href="Contact.html">Contact</a>\n'
+        '        <a href="Services.html">Services</a>\n'
+        '      </span>\n'
+        '    </span>\n'
+        '    <span class="menu ig-menu">\n'
+        f'      <a class="ig" href="{BIOSITE_URL}" target="_blank" rel="noopener">@dans_logs <i class="caret">▾</i></a>\n'
+        '      <span class="submenu">\n'
+        '        <a href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">Instagram</a>\n'
+        '        <a href="https://www.tiktok.com/@dans_logs" target="_blank" rel="noopener">TikTok</a>\n'
+        '        <a href="https://www.youtube.com/@Dans_Logs" target="_blank" rel="noopener">YouTube</a>\n'
+        '      </span>\n'
+        '    </span>\n'
+        '  </nav>'
+    )
+
+
+FOOTER_PAGES = (
+    '<div class="pages">\n'
+    '    <a href="Photography.html">Photography</a>\n'
+    '    <a href="Gallery.html">Gallery</a>\n'
+    '    <a href="Film.html">Film</a>\n'
+    '    <a href="Latest.html">Latest</a>\n'
+    '    <a href="About.html">About</a>\n'
+    '    <a href="Services.html">Services</a>\n'
+    '    <a href="Contact.html">Contact</a>\n'
+    '  </div>'
+)
+
+
 def transform(name, html):
     # 1) remove the image-slot script include (before token swap below)
     html = re.sub(r'\s*<script src="\.\./lib/image-slot\.js"></script>', "", html)
@@ -80,17 +138,14 @@ def transform(name, html):
     html = re.sub(r'\s*<span class="hint">.*?</span>\s*</span>', "", html,
                   flags=re.DOTALL)
 
-    # 7) add a Gallery link right after every Photography link (nav + footer)
-    html = html.replace(
-        "Photography</a>",
-        'Photography</a>\n    <a href="Gallery.html">Gallery</a>')
-
-    # 8) add a Latest link right after every Film link (nav + footer),
-    #    unless the page already has one in its nav/footer (Latest.html itself)
-    if '<a href="Latest.html">Latest</a>' not in html:
-        html = html.replace(
-            'Film.html">Film</a>',
-            'Film.html">Film</a>\n    <a href="Latest.html">Latest</a>')
+    # 7) replace the flat header nav with the dropdown nav, and the footer
+    #    page list with the full flat list. (Links.html is the standalone
+    #    bio-site page - it has no site header, so leave it untouched.)
+    if name != "Links":
+        html = re.sub(r"<nav>.*?</nav>", nav_html(NAV_GROUP.get(name, "")),
+                      html, count=1, flags=re.DOTALL)
+        html = re.sub(r'<div class="pages">.*?</div>', FOOTER_PAGES,
+                      html, count=1, flags=re.DOTALL)
 
     return html
 
