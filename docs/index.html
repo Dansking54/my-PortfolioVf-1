@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="site.css?v=3" />
+<link rel="stylesheet" href="site.css?v=4" />
 <style>
   /* Hero — Direction A banner layout, DAN LOGS type from B */
   .hero{position:relative;height:100vh;min-height:660px}
@@ -82,29 +82,31 @@
   <a class="logo" href="index.html">Dan<b>.</b></a>
   <nav>
     <a class="active" href="index.html">Home</a>
-    <span class="menu">
-      <a href="Gallery.html">Gallery <i class="caret">▾</i></a>
-      <span class="submenu">
+    <div class="menu">
+      <button type="button" class="menu-label">Gallery <i class="caret">▾</i></button>
+      <div class="submenu">
+        <a href="Gallery.html">Projects</a>
         <a href="Photography.html">Photography</a>
         <a href="Film.html">Film</a>
         <a href="Latest.html">Latest</a>
-      </span>
-    </span>
-    <span class="menu">
-      <a href="About.html">About <i class="caret">▾</i></a>
-      <span class="submenu">
+      </div>
+    </div>
+    <div class="menu">
+      <button type="button" class="menu-label">About <i class="caret">▾</i></button>
+      <div class="submenu">
+        <a href="About.html">About me</a>
         <a href="Contact.html">Contact</a>
         <a href="Services.html">Services</a>
-      </span>
-    </span>
-    <span class="menu ig-menu">
+      </div>
+    </div>
+    <div class="menu ig-menu">
       <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">@dans_logs <i class="caret">▾</i></a>
-      <span class="submenu">
+      <div class="submenu">
         <a href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.tiktok.com/@dans_logs" target="_blank" rel="noopener">TikTok</a>
         <a href="https://www.youtube.com/@Dans_Logs" target="_blank" rel="noopener">YouTube</a>
-      </span>
-    </span>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -177,7 +179,7 @@
   <small>© 2026 Dan's Logs — Photographer &amp; Filmmaker, Montréal</small>
 </footer>
 
-<script src="projects.js?v=3"></script>
+<script src="projects.js?v=4"></script>
 <script>
   var h=document.getElementById('hdr');
   var badge=document.getElementById('heroBadge');

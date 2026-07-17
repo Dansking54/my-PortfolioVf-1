@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="site.css?v=3" />
+<link rel="stylesheet" href="site.css?v=4" />
 <style>
   .wall-wrap{padding-bottom:90px}
   /* Wall of projects — each cover links into its album */
@@ -35,29 +35,31 @@
   <a class="logo" href="index.html">Dan<b>.</b></a>
   <nav>
     <a href="index.html">Home</a>
-    <span class="menu">
-      <a class="active" href="Gallery.html">Gallery <i class="caret">▾</i></a>
-      <span class="submenu">
+    <div class="menu">
+      <button type="button" class="menu-label active">Gallery <i class="caret">▾</i></button>
+      <div class="submenu">
+        <a href="Gallery.html">Projects</a>
         <a href="Photography.html">Photography</a>
         <a href="Film.html">Film</a>
         <a href="Latest.html">Latest</a>
-      </span>
-    </span>
-    <span class="menu">
-      <a href="About.html">About <i class="caret">▾</i></a>
-      <span class="submenu">
+      </div>
+    </div>
+    <div class="menu">
+      <button type="button" class="menu-label">About <i class="caret">▾</i></button>
+      <div class="submenu">
+        <a href="About.html">About me</a>
         <a href="Contact.html">Contact</a>
         <a href="Services.html">Services</a>
-      </span>
-    </span>
-    <span class="menu ig-menu">
+      </div>
+    </div>
+    <div class="menu ig-menu">
       <a class="ig" href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">@dans_logs <i class="caret">▾</i></a>
-      <span class="submenu">
+      <div class="submenu">
         <a href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.tiktok.com/@dans_logs" target="_blank" rel="noopener">TikTok</a>
         <a href="https://www.youtube.com/@Dans_Logs" target="_blank" rel="noopener">YouTube</a>
-      </span>
-    </span>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -97,6 +99,6 @@
   var h=document.getElementById('hdr');
   addEventListener('scroll',function(){h.classList.toggle('scrolled',scrollY>40||true)},{passive:true});
 </script>
-<script src="gallery.js?v=3"></script>
+<script src="gallery.js?v=4"></script>
 </body>
 </html>

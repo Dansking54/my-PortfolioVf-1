@@ -64,38 +64,44 @@ BIOSITE_URL = "https://www.instagram.com/dans_logs/"
 
 # Bump this whenever site.css / the shared JS changes, so browsers (and the
 # GitHub Pages CDN) fetch the fresh file instead of a stale cached copy.
-ASSET_VERSION = "3"
+ASSET_VERSION = "4"
 
 
 def nav_html(active):
-    def a(group):
-        return ' class="active"' if active == group else ''
+    # Gallery + About are plain dropdown labels (buttons) - the real pages live
+    # inside their menus as named items ("Projects", "About me") so visitors
+    # don't have to guess that the title itself is clickable.
+    home = ' class="active"' if active == "home" else ""
+    gal = " active" if active == "gallery" else ""
+    abt = " active" if active == "about" else ""
     return (
         '<nav>\n'
-        f'    <a{a("home")} href="index.html">Home</a>\n'
-        '    <span class="menu">\n'
-        f'      <a{a("gallery")} href="Gallery.html">Gallery <i class="caret">▾</i></a>\n'
-        '      <span class="submenu">\n'
+        f'    <a{home} href="index.html">Home</a>\n'
+        '    <div class="menu">\n'
+        f'      <button type="button" class="menu-label{gal}">Gallery <i class="caret">▾</i></button>\n'
+        '      <div class="submenu">\n'
+        '        <a href="Gallery.html">Projects</a>\n'
         '        <a href="Photography.html">Photography</a>\n'
         '        <a href="Film.html">Film</a>\n'
         '        <a href="Latest.html">Latest</a>\n'
-        '      </span>\n'
-        '    </span>\n'
-        '    <span class="menu">\n'
-        f'      <a{a("about")} href="About.html">About <i class="caret">▾</i></a>\n'
-        '      <span class="submenu">\n'
+        '      </div>\n'
+        '    </div>\n'
+        '    <div class="menu">\n'
+        f'      <button type="button" class="menu-label{abt}">About <i class="caret">▾</i></button>\n'
+        '      <div class="submenu">\n'
+        '        <a href="About.html">About me</a>\n'
         '        <a href="Contact.html">Contact</a>\n'
         '        <a href="Services.html">Services</a>\n'
-        '      </span>\n'
-        '    </span>\n'
-        '    <span class="menu ig-menu">\n'
+        '      </div>\n'
+        '    </div>\n'
+        '    <div class="menu ig-menu">\n'
         f'      <a class="ig" href="{BIOSITE_URL}" target="_blank" rel="noopener">@dans_logs <i class="caret">▾</i></a>\n'
-        '      <span class="submenu">\n'
+        '      <div class="submenu">\n'
         '        <a href="https://www.instagram.com/dans_logs/" target="_blank" rel="noopener">Instagram</a>\n'
         '        <a href="https://www.tiktok.com/@dans_logs" target="_blank" rel="noopener">TikTok</a>\n'
         '        <a href="https://www.youtube.com/@Dans_Logs" target="_blank" rel="noopener">YouTube</a>\n'
-        '      </span>\n'
-        '    </span>\n'
+        '      </div>\n'
+        '    </div>\n'
         '  </nav>'
     )
 

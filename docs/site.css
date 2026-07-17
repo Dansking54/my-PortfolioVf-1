@@ -62,19 +62,29 @@ header.site.on-photo:not(.scrolled) nav a.active{background:rgba(255,255,255,.18
 header.site.on-photo:not(.scrolled) nav a.ig{border-color:rgba(255,255,255,.35)}
 @media(max-width:880px){
   header.site{padding:12px 18px}
-  header.site nav{overflow-x:auto}
   header.site nav a{font-size:11px;padding:6px 9px}
 }
 
 /* ===== Dropdown nav ===== */
 header.site nav .menu{position:relative;display:inline-flex;align-items:center}
-header.site nav .menu>a{display:inline-flex;align-items:center;gap:5px}
+header.site nav .menu>a,
+header.site nav .menu-label{display:inline-flex;align-items:center;gap:5px}
+/* the non-link top labels (Gallery, About) — they only open a dropdown */
+header.site nav .menu-label{
+  font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 13px;border-radius:999px;color:var(--muted);background:none;border:0;cursor:pointer;
+  transition:.2s;white-space:nowrap;
+}
+header.site nav .menu-label:hover{color:var(--ink)}
+header.site nav .menu-label.active{color:var(--ink);background:color-mix(in srgb,var(--sand) 28%,transparent)}
+header.site.on-photo:not(.scrolled) nav .menu-label{color:#f7f2e8}
+header.site.on-photo:not(.scrolled) nav .menu-label.active{background:rgba(255,255,255,.18)}
 header.site nav .caret{font-style:normal;font-size:9px;opacity:.6;transition:transform .2s}
 header.site nav .menu:hover .caret,
 header.site nav .menu:focus-within .caret{transform:rotate(180deg)}
 header.site nav .submenu{
   position:absolute;top:calc(100% + 8px);left:0;min-width:174px;
-  background:color-mix(in srgb,var(--paper) 95%,transparent);
+  background:color-mix(in srgb,var(--paper) 96%,transparent);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border:1px solid var(--line);border-radius:12px;padding:7px;
   box-shadow:0 18px 42px rgba(0,0,0,.20);
@@ -85,7 +95,7 @@ header.site nav .submenu{
 header.site nav .menu:hover .submenu,
 header.site nav .menu:focus-within .submenu{opacity:1;visibility:visible;transform:none}
 header.site nav .submenu a{
-  padding:9px 13px;border-radius:8px;color:var(--muted);
+  padding:9px 13px;border-radius:8px;color:var(--muted);font-size:12px;
   background:none;border:0;white-space:nowrap;
 }
 header.site nav .submenu a:hover{background:color-mix(in srgb,var(--sand) 24%,transparent);color:var(--ink)}
@@ -96,9 +106,10 @@ header.site nav .ig-menu .submenu{left:auto;right:0}
 header.site.on-photo:not(.scrolled) nav .submenu a{color:var(--muted)}
 header.site.on-photo:not(.scrolled) nav .submenu a:hover{color:var(--ink)}
 @media(max-width:880px){
-  /* on mobile the top items are plain links; sub-links live in the footer */
-  header.site nav .caret{display:none}
-  header.site nav .submenu{display:none}
+  /* tap a top label to open its dropdown (via :focus-within) */
+  header.site nav{overflow:visible;flex-wrap:wrap;justify-content:flex-end}
+  header.site nav .menu-label,header.site nav>a{font-size:11px;padding:6px 8px}
+  header.site nav .submenu{min-width:150px}
 }
 
 /* ===== Page head (interior pages) ===== */
