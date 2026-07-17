@@ -53,15 +53,26 @@
 </div>
 
 <div class="formwrap">
-  <form class="form" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Sent — talk soon ♥'">
+  <form class="form" id="bookForm">
     <div class="row">
-      <label>Name<input type="text" placeholder="Your name" required /></label>
-      <label>Email<input type="email" placeholder="you@email.com" required /></label>
+      <label>Name<input type="text" name="name" placeholder="Your name" required /></label>
+      <label>Email<input type="email" name="email" placeholder="you@email.com" required /></label>
     </div>
-    <label>Project<input type="text" placeholder="Portrait, wedding, music video…" /></label>
-    <label>Message<textarea placeholder="Tell me what you're making."></textarea></label>
+    <label>Project<input type="text" name="project" placeholder="Portrait, wedding, music video…" /></label>
+    <label>Message<textarea name="message" placeholder="Tell me what you're making."></textarea></label>
     <button class="btn" type="submit">Send message</button>
   </form>
+  <script>
+    document.getElementById('bookForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = e.target;
+      var subject = 'Booking — ' + (f.project.value || 'New project') + ' — ' + f.name.value;
+      var body = f.message.value + '\n\n— ' + f.name.value + ' (' + f.email.value + ')';
+      location.href = 'mailto:danslogs.contact@gmail.com?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+      f.querySelector('.btn').textContent = 'Opening your email app…';
+    });
+  </script>
 </div>
 
 <footer class="site">

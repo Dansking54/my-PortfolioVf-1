@@ -30,7 +30,7 @@
 
   /* Avatar */
   .bio-av{position:relative;width:118px;height:118px;margin-bottom:22px}
-  .bio-av img{width:118px;height:118px;border-radius:50%;
+  .bio-av img{width:118px;height:118px;border-radius:50%;object-fit:cover;
     box-shadow:0 0 0 2px var(--sand),0 0 0 8px rgba(212,180,131,.12),0 18px 40px rgba(0,0,0,.5)}
   .bio-av .ring2{position:absolute;inset:-14px;border-radius:50%;
     border:1px solid rgba(212,180,131,.28);pointer-events:none}
@@ -113,7 +113,7 @@
 <main class="bio-card">
   <div class="bio-av">
     <div class="ring2"></div>
-    <img id="bio-avatar" shape="circle" src="assets/pfp.png" placeholder="Your photo"></img>
+    <img id="bio-avatar" src="assets/pfp.png" alt="Dan — behind the lens" />
   </div>
 
   <h1 class="bio-name">Dan Logs</h1>

@@ -11,7 +11,7 @@
 <style>
   /* Hero — Direction A banner layout, DAN LOGS type from B */
   .hero{position:relative;height:100vh;min-height:660px}
-  .hero img{position:absolute;inset:0;width:100%;height:100%}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
   .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 52%,rgba(0,0,0,.62))}
   .hero-copy{position:absolute;left:40px;right:40px;bottom:56px;z-index:2;color:#f7f2e8;
@@ -82,7 +82,7 @@
 </header>
 
 <div class="hero">
-  <img id="hero" src="assets/hero-goldenhour.jpg" placeholder="Drop your hero photo"></img>
+  <img id="hero" src="assets/hero-goldenhour.jpg" alt="Golden hour over Montréal" />
   <div class="hero-coord">45.5017° N · 73.5673° W</div>
   <a class="hero-badge" id="heroBadge" href="About.html">
     <img src="assets/pfp.png" alt="Dan" />

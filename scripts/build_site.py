@@ -64,6 +64,12 @@ def transform(name, html):
         repl = f'<img id="{sid}" src="{src}" alt="{alt}" loading="lazy">'
         html = pattern.sub(repl, html)
 
+    # 5b) strip leftover design-tool attributes from plain <img> tags
+    #     (placeholder=/shape= only mean something inside Claude Design)
+    html = re.sub(r'(<img\b[^>]*?)\s+placeholder="[^"]*"', r"\1", html)
+    html = re.sub(r'(<img\b[^>]*?)\s+shape="[^"]*"', r"\1", html)
+    html = html.replace("></img>", " />")
+
     # 6) drop the "drag & drop your photos" hint (does nothing on a live site)
     html = re.sub(r'\s*<span class="hint">.*?</span>\s*</span>', "", html,
                   flags=re.DOTALL)
