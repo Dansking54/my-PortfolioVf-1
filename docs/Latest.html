@@ -34,17 +34,11 @@
   .fcard:hover .go{letter-spacing:.18em}
   @media(max-width:760px){.follow-grid{grid-template-columns:1fr}}
 
-  /* Instagram carousel */
+  /* Instagram grid — fixed-size cards, no motion */
   .ig-section{padding:20px 0 0}
-  .ig-carousel{overflow:hidden;position:relative}
-  .ig-carousel::before,.ig-carousel::after{
-    content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none;
-  }
-  .ig-carousel::before{left:0;background:linear-gradient(90deg,var(--paper),transparent)}
-  .ig-carousel::after{right:0;background:linear-gradient(270deg,var(--paper),transparent)}
-  .ig-track{display:flex;align-items:flex-start;gap:24px;width:max-content;will-change:transform}
-  .ig-track .ig-slide{flex:0 0 auto;width:328px}
-  .ig-track .ig-slide iframe{border-radius:8px !important}
+  .ig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .ig-card{width:100%;max-width:340px;height:520px;overflow:hidden;border:1px solid var(--line);border-radius:8px;margin:0 auto;background:var(--paper2)}
+  .ig-card iframe{border-radius:8px !important}
 </style>
 </head>
 <body>
@@ -90,9 +84,7 @@
 
 <section class="wrap ig-section">
   <span class="eyebrow">Latest from Instagram</span>
-  <div class="ig-carousel" id="igCarousel">
-    <div class="ig-track" id="igTrack"></div>
-  </div>
+  <div class="ig-grid" id="igGrid"></div>
 </section>
 
 <section class="wrap yt-section">
@@ -167,25 +159,19 @@
 <script src="instagram-posts.js"></script>
 <script>
 (function(){
-  var track = document.getElementById('igTrack');
-  var carousel = document.getElementById('igCarousel');
+  var grid = document.getElementById('igGrid');
   var posts = window.IG_POSTS || [];
-  if (!posts.length || !track) return;
+  if (!posts.length || !grid) return;
 
-  function makeSlide(url){
-    var slide = document.createElement('div');
-    slide.className = 'ig-slide';
+  posts.forEach(function(url){
+    var card = document.createElement('div');
+    card.className = 'ig-card';
     var bq = document.createElement('blockquote');
     bq.className = 'instagram-media';
     bq.setAttribute('data-instgrm-permalink', url);
     bq.setAttribute('data-instgrm-version', '14');
-    slide.appendChild(bq);
-    return slide;
-  }
-
-  // Build the list twice back-to-back so the loop can reset seamlessly.
-  posts.concat(posts).forEach(function(url){
-    track.appendChild(makeSlide(url));
+    card.appendChild(bq);
+    grid.appendChild(card);
   });
 
   var s = document.createElement('script');
@@ -195,47 +181,6 @@
     if (window.instgrm) window.instgrm.Embeds.process();
   };
   document.body.appendChild(s);
-
-  var offset = 0;
-  var running = true;
-  var speed = 30; // px per second
-  var last = null;
-  var halfWidth = 0;
-  var resumeTimer = null;
-
-  function measure(){
-    halfWidth = track.scrollWidth / 2;
-  }
-  // Re-measure once embeds have had a chance to render (they resize the blockquote).
-  window.addEventListener('load', function(){ setTimeout(measure, 1500); });
-  setTimeout(measure, 3000);
-
-  function step(ts){
-    if (last === null) last = ts;
-    var dt = (ts - last) / 1000;
-    last = ts;
-    if (running) {
-      offset += speed * dt;
-      if (halfWidth > 0 && offset >= halfWidth) offset -= halfWidth;
-      track.style.transform = 'translateX(' + (-offset) + 'px)';
-    }
-    requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-
-  function pause(){ running = false; }
-  function resume(){ running = true; last = null; }
-
-  carousel.addEventListener('mouseenter', pause);
-  carousel.addEventListener('mouseleave', resume);
-  carousel.addEventListener('touchstart', function(){
-    clearTimeout(resumeTimer);
-    pause();
-  }, {passive:true});
-  carousel.addEventListener('touchend', function(){
-    clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(resume, 1500);
-  }, {passive:true});
 })();
 </script>
 </body>
