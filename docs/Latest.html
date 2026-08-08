@@ -9,11 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="site.css?v=4" />
 <style>
-  /* Newest upload — responsive 16:9 player */
-  .yt{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border:1px solid var(--line)}
-  .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .yt-note{color:var(--muted);font-size:14px;margin-top:14px}
+  /* Latest uploads — small multi-video grid, always fresh (no manual list needed) */
+  .yt-section{padding:64px 0 20px}
+  .yt-section .eyebrow{display:block;margin-bottom:8px}
+  .yt-note{color:var(--muted);font-size:14px;margin-bottom:24px}
   .yt-note b{color:var(--accent);font-weight:600}
+  .yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .yt-mini{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border:1px solid var(--line);border-radius:8px}
+  .yt-mini iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  @media(max-width:760px){.yt-grid{grid-template-columns:1fr}}
 
   /* Follow cards */
   .follow{padding:84px 0 110px}
@@ -84,23 +88,26 @@
   </div>
 </div>
 
-<section class="wrap" style="padding-bottom:10px">
-  <div class="yt">
-    <iframe
-      src="https://www.youtube.com/embed/videoseries?list=UU5YngcKnC8F60BboX92oBgg"
-      title="Latest upload — Dan's Logs on YouTube"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen></iframe>
-  </div>
-  <p class="yt-note">Always the <b>newest upload</b> — this player follows my channel, so whatever I posted last plays here first.</p>
-</section>
-
 <section class="wrap ig-section">
   <span class="eyebrow">Latest from Instagram</span>
   <div class="ig-carousel" id="igCarousel">
     <div class="ig-track" id="igTrack"></div>
+  </div>
+</section>
+
+<section class="wrap yt-section">
+  <span class="eyebrow">All latest YouTube vids will be here</span>
+  <p class="yt-note">These three always follow my channel's <b>newest uploads</b> — no manual updates needed.</p>
+  <div class="yt-grid">
+    <div class="yt-mini">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=UU5YngcKnC8F60BboX92oBgg&index=0" title="Latest upload — Dan's Logs on YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="yt-mini">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=UU5YngcKnC8F60BboX92oBgg&index=1" title="2nd latest upload — Dan's Logs on YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="yt-mini">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=UU5YngcKnC8F60BboX92oBgg&index=2" title="3rd latest upload — Dan's Logs on YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
